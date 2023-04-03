@@ -149,7 +149,7 @@ const t = window['$t']
 
 const formInline = reactive({
   username: 'admin',
-  password: 'admin',
+  password: '123456',
 })
 
 const rules = {

@@ -53,6 +53,7 @@ export default ({ mode }) => defineConfig({
         ws: true,
         secure: true,
       }
+     
     }
   },
   plugins: [
