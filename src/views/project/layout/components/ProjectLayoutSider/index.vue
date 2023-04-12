@@ -14,6 +14,7 @@
     <div class="go-project-sider-flex">
       <aside>
         <n-space vertical class="go-project-sider-top">
+          <!--按钮：创建项目-->
           <project-layout-create :collapsed="collapsed"></project-layout-create>
         </n-space>
         <n-menu
@@ -22,50 +23,49 @@
           :collapsed-width="getAsideCollapsedWidth"
           :collapsed-icon-size="22"
           :default-expanded-keys="defaultExpandedKeys"
-       ></n-menu>
+        ></n-menu>
       </aside>
       <!-- 底部提示 -->
       <div class="sider-bottom">
-        <project-layout-aside-footer :collapsed="collapsed"></project-layout-aside-footer>
+        
       </div>
     </div>
   </n-layout-sider>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, toRefs } from 'vue'
-import { ProjectLayoutCreate } from '../ProjectLayoutCreate/index'
-import { ProjectLayoutAsideFooter } from '../ProjectLayoutAsideFooter/index'
-import { asideWidth } from '@/settings/designSetting'
-import { useRoute } from 'vue-router'
-import { useSettingStore } from '@/store/modules/settingStore/settingStore'
-import { menuOptionsInit, expandedKeys } from './menu'
+import { ref, computed, onMounted, onUnmounted, toRefs } from "vue";
+import { ProjectLayoutCreate } from "../ProjectLayoutCreate/index";
+import { asideWidth } from "@/settings/designSetting";
+import { useRoute } from "vue-router";
+import { useSettingStore } from "@/store/modules/settingStore/settingStore";
+import { menuOptionsInit, expandedKeys } from "./menu";
 
-const collapsed = ref<boolean>(false)
-const { getAsideCollapsedWidth } = toRefs(useSettingStore())
+const collapsed = ref<boolean>(false);
+const { getAsideCollapsedWidth } = toRefs(useSettingStore());
 
-const route = useRoute()
-const routeRame = computed(() => route.name)
-const menuValue = ref(routeRame)
+const route = useRoute();
+const routeRame = computed(() => route.name);
+const menuValue = ref(routeRame);
 
-const menuOptions = menuOptionsInit()
+const menuOptions = menuOptionsInit();
 
-const defaultExpandedKeys = expandedKeys()
+const defaultExpandedKeys = expandedKeys();
 
 const watchWidth = () => {
-  const Width = document.body.clientWidth
+  const Width = document.body.clientWidth;
   if (Width <= 950) {
-    collapsed.value = true
-  } else collapsed.value = false
-}
+    collapsed.value = true;
+  } else collapsed.value = false;
+};
 
 onMounted(() => {
-  window.addEventListener('resize', watchWidth)
-})
+  window.addEventListener("resize", watchWidth);
+});
 
-onUnmounted(()=> {
-  window.removeEventListener('resize', watchWidth)
-})
+onUnmounted(() => {
+  window.removeEventListener("resize", watchWidth);
+});
 </script>
 
 <style lang="scss" scoped>
@@ -73,7 +73,7 @@ $siderHeight: 100vh;
 
 @include go(project) {
   &-sider {
-    @include fetch-bg-color('aside-background-color');
+    @include fetch-bg-color("aside-background-color");
     &-top {
       display: flex;
       align-items: center;
