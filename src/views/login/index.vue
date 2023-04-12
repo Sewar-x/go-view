@@ -226,7 +226,6 @@ const handleSubmit = async (e: Event) => {
           [SystemStoreUserInfoEnum.USER_ID]: id,
           [SystemStoreUserInfoEnum.USER_NAME]: username,
           [SystemStoreUserInfoEnum.NICK_NAME]: nickname,
-          t,
         });
 
         window["$message"].success(t("login.login_success"));
@@ -304,7 +303,6 @@ $carousel-image-height: 60vh;
       }
     }
     .login-account {
-      transition: all 0.3s;
       display: flex;
       flex-direction: column;
       margin: 0 160px;
@@ -313,7 +311,7 @@ $carousel-image-height: 60vh;
       }
 
       &-card {
-        transition: all 0.3s;
+        transition: all 0.8s;
         &:hover {
           transform: scale(1.1);
           box-shadow: #90939918 0px 15px 25px, #60626634 0px 5px 10px;

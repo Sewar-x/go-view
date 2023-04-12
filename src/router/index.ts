@@ -5,7 +5,15 @@ import { PageEnum } from '@/enums/pageEnum'
 import { HttpErrorPage, LoginRoute, ReloadRoute, RedirectRoute } from '@/router/base'
 import { Layout } from '@/router/constant'
 
-import modules from '@/router/modules'
+// import.meta.globEager() 直接引入所有的模块 Vite 独有的功能
+const modules = import.meta.globEager('./modules/*.ts') as any;
+const routeModuleList: RouteRecordRaw[] = [];
+// 加入到路由集合中
+Object.keys(modules).forEach((key) => {
+  const mod = modules[key].default || {};
+  const modList = Array.isArray(mod) ? [...mod] : [mod];
+  routeModuleList.push(...modList);
+});
 
 const RootRoute: Array<RouteRecordRaw> = [
   {
@@ -19,10 +27,7 @@ const RootRoute: Array<RouteRecordRaw> = [
     children: [
       ...HttpErrorPage,
       ...RedirectRoute,
-      modules.projectRoutes,
-      modules.chartRoutes,
-      modules.previewRoutes,
-      modules.editRoutes
+      ...routeModuleList
     ]
   }
 ]
