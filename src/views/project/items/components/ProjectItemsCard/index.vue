@@ -1,6 +1,6 @@
 <template>
   <div v-if="cardData" class="go-items-list-card">
-    <n-card hoverable size="small">
+    <n-card class="go-items-list-card-container" hoverable size="small">
       <div class="list-content">
         <!-- 顶部按钮 -->
         <div class="list-content-top">
@@ -9,9 +9,9 @@
             :hidden="['remove']"
             @close="deleteHandle"
             @resize="resizeHandle"
-         ></mac-os-control-btn>
+          ></mac-os-control-btn>
         </div>
-        <!-- 中间 -->
+        <!-- 中间图片展示 -->
         <div class="list-content-img" @click="resizeHandle">
           <n-image
             object-fit="contain"
@@ -20,13 +20,13 @@
             :src="`${cardData.image}?time=${new Date().getTime()}`"
             :alt="cardData.title"
             :fallback-src="requireErrorImg()"
-         ></n-image>
+          ></n-image>
         </div>
       </div>
       <template #action>
         <div class="go-flex-items-center list-footer" justify="space-between">
           <n-text class="go-ellipsis-1">
-            {{ cardData.title || cardData.id || '未命名' }}
+            {{ cardData.title || cardData.id || "未命名" }}
           </n-text>
           <!-- 工具 -->
           <div class="go-flex-items-center list-footer-ri">
@@ -36,12 +36,8 @@
                   class="go-animation-twinkle"
                   dot
                   :color="cardData.release ? '#34c749' : '#fcbc40'"
-              ></n-badge>
-                {{
-                  cardData.release
-                    ? $t('project.release')
-                    : $t('project.unreleased')
-                }}
+                ></n-badge>
+                {{ cardData.release ? $t("project.release") : $t("project.unreleased") }}
               </n-text>
 
               <template v-for="item in fnBtnList" :key="item.key">
@@ -73,7 +69,7 @@
                 </n-tooltip>
               </template>
             </n-space>
-          <!-- end -->
+            <!-- end -->
           </div>
         </div>
       </template>
@@ -82,12 +78,11 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, PropType } from 'vue'
-import { renderIcon, renderLang,  requireErrorImg } from '@/utils'
-import { icon } from '@/plugins'
-import { MacOsControlBtn } from '@/components/Tips/MacOsControlBtn'
-import { Chartype } from '../../index.d'
-import { log } from 'console'
+import { reactive, ref, PropType } from "vue";
+import { renderIcon, renderLang, requireErrorImg } from "@/utils";
+import { icon } from "@/plugins";
+import { MacOsControlBtn } from "@/components/Tips/MacOsControlBtn";
+import { Chartype } from "../../index.d";
 const {
   EllipsisHorizontalCircleSharpIcon,
   CopyIcon,
@@ -96,138 +91,135 @@ const {
   DownloadIcon,
   BrowsersOutlineIcon,
   HammerIcon,
-  SendIcon
-} = icon.ionicons5
+  SendIcon,
+} = icon.ionicons5;
 
-const emit = defineEmits(['preview', 'delete', 'resize', 'edit', 'release'])
+const emit = defineEmits(["preview", "delete", "resize", "edit", "release"]);
 
 const props = defineProps({
-  cardData: Object as PropType<Chartype>
-})
-
+  cardData: Object as PropType<Chartype>,
+});
+//按钮组
 const fnBtnList = reactive([
   {
-    label: renderLang('global.r_edit'),
-    key: 'edit',
-    icon: renderIcon(HammerIcon)
+    label: renderLang("global.r_edit"),
+    key: "edit", //编辑按钮
+    icon: renderIcon(HammerIcon),
   },
   {
-    lable: renderLang('global.r_more'),
-    key: 'select',
-    icon: renderIcon(EllipsisHorizontalCircleSharpIcon)
-  }
-])
-
+    lable: renderLang("global.r_more"),
+    key: "select", //下拉选择
+    icon: renderIcon(EllipsisHorizontalCircleSharpIcon),
+  },
+]);
+// 下拉选项
 const selectOptions = ref([
   {
-    label: renderLang('global.r_preview'),
-    key: 'preview',
-    icon: renderIcon(BrowsersOutlineIcon)
+    label: renderLang("global.r_preview"),
+    key: "preview", //预览
+    icon: renderIcon(BrowsersOutlineIcon),
   },
   {
-    label: renderLang('global.r_copy'),
-    key: 'copy',
+    label: renderLang("global.r_copy"),
+    key: "copy", //复制
     icon: renderIcon(CopyIcon),
-    disabled: true
+    disabled: true,
   },
   {
-    label: renderLang('global.r_rename'),
-    key: 'rename',
+    label: renderLang("global.r_rename"),
+    key: "rename", //重命名
     icon: renderIcon(PencilIcon),
-    disabled: true
+    disabled: true,
   },
   {
-    type: 'divider',
-    key: 'd1'
+    type: "divider",
+    key: "d1",
   },
   {
     label: props.cardData?.release
-      ? renderLang('global.r_unpublish')
-      : renderLang('global.r_publish'),
-    key: 'release',
-    icon: renderIcon(SendIcon)
+      ? renderLang("global.r_unpublish")
+      : renderLang("global.r_publish"),
+    key: "release", //发布
+    icon: renderIcon(SendIcon),
   },
   {
-    label: renderLang('global.r_download'),
-    key: 'download',
+    label: renderLang("global.r_download"),
+    key: "download", //下载
     icon: renderIcon(DownloadIcon),
-    disabled: true
+    disabled: true,
   },
   {
-    type: 'divider',
-    key: 'd2'
+    type: "divider",
+    key: "d2",
   },
   {
-    label: renderLang('global.r_delete'),
-    key: 'delete',
-    icon: renderIcon(TrashIcon)
-  }
-])
+    label: renderLang("global.r_delete"),
+    key: "delete", //删除
+    icon: renderIcon(TrashIcon),
+  },
+]);
 
 const handleSelect = (key: string) => {
-  switch (key) {
-    case 'preview':
-      previewHandle()
-      break
-    case 'delete':
-      deleteHandle()
-      break
-    case 'release':
-      releaseHandle()
-      break
-    case 'edit':
-      editHandle()
-      break
-  }
-}
+  const methodMap: {
+    [key: string]: () => void;
+  } = {
+    preview: previewHandle,
+    delete: deleteHandle,
+    release: releaseHandle,
+    edit: editHandle,
+  };
+  const method = methodMap[key];
+  method && method();
+};
 
 // 预览处理
 const previewHandle = () => {
-  emit('preview', props.cardData)
-}
+  emit("preview", props.cardData);
+};
 
 // 删除处理
 const deleteHandle = () => {
-  emit('delete', props.cardData)
-}
+  emit("delete", props.cardData);
+};
 
 // 编辑处理
 const editHandle = () => {
-  emit('edit', props.cardData)
-}
+  emit("edit", props.cardData);
+};
 
 // 编辑处理
 const releaseHandle = () => {
-  emit('release', props.cardData)
-}
+  emit("release", props.cardData);
+};
 
 // 放大处理
 const resizeHandle = () => {
-  emit('resize', props.cardData)
-}
+  emit("resize", props.cardData);
+};
 </script>
 
 <style lang="scss" scoped>
 $contentHeight: 180px;
-@include go('items-list-card') {
+@include go("items-list-card") {
   position: relative;
   border-radius: $--border-radius-base;
   border: 1px solid rgba(0, 0, 0, 0);
   @extend .go-transition;
   &:hover {
-    @include hover-border-color('hover-border-color');
+    @include hover-border-color("hover-border-color");
   }
+  @include hoverScale("items-list-card-container", 1.08);
   .list-content {
     margin-top: 20px;
     margin-bottom: 5px;
     cursor: pointer;
     border-radius: $--border-radius-base;
-    @include background-image('background-point');
+    @include background-image("background-point");
     @extend .go-point-bg;
     &-top {
       position: absolute;
       top: 10px;
-      left: 10px;
+      right: 10px;
       height: 22px;
     }
     &-img {

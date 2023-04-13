@@ -14,86 +14,86 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { icon } from '@/plugins'
-import { computed } from 'vue'
-import { screenfullFn } from '@/utils'
+import { icon } from "@/plugins";
+import { computed } from "vue";
+import { screenfullFn } from "@/utils";
 
-const emit = defineEmits(['close', 'remove', 'resize', 'fullResize'])
+const emit = defineEmits(["close", "remove", "resize", "fullResize"]);
 
 const props = defineProps({
   // mini 版本
   mini: {
     request: false,
     type: Boolean,
-    default: false
+    default: false,
   },
   // 禁用所有按钮
   disabled: {
     request: false,
     type: Boolean,
-    default: false
+    default: false,
   },
   // 要隐藏的按钮
   hidden: {
     request: false,
     type: Array,
     default() {
-      return []
-    }
+      return [];
+    },
   },
   // 使用全屏功能
   narrow: {
     request: false,
     type: Boolean,
-    default: false
-  }
-})
+    default: false,
+  },
+});
 
-const { CloseIcon, RemoveIcon, ResizeIcon } = icon.ionicons5
+const { CloseIcon, RemoveIcon, ResizeIcon } = icon.ionicons5;
 
 const filterBtnList = computed(() => {
-  const res = btnList.filter(e => {
-    return props.hidden.findIndex(p => e.key == p) === -1
-  })
-  return res
-})
+  const res = btnList.filter((e) => {
+    return props.hidden.findIndex((p) => e.key == p) === -1;
+  });
+  return res;
+});
 
 const isFull = computed(() => {
-  return props.narrow && screenfullFn(true)
-})
-
+  return props.narrow && screenfullFn(true);
+});
+type ButtonKey = "fullResize" | "close" | "remove" | "resize";
 const btnList: {
-  title: string
-  key: 'close' | 'remove' | 'resize' | 'fullResize'
-  icon: any
+  title: string;
+  key: ButtonKey;
+  icon: any;
 }[] = [
   {
-    title: '关闭',
-    key: 'close',
-    icon: CloseIcon
+    title: isFull.value ? "缩小" : "放大",
+    key: props.narrow ? "fullResize" : "resize",
+    icon: ResizeIcon,
   },
   {
-    title: '缩小',
-    key: 'remove',
-    icon: RemoveIcon
+    title: "关闭",
+    key: "close",
+    icon: CloseIcon,
   },
   {
-    title: isFull.value ? '缩小' : '放大',
-    key: props.narrow ? 'fullResize' : 'resize',
-    icon: ResizeIcon
-  }
-]
+    title: "缩小",
+    key: "remove",
+    icon: RemoveIcon,
+  },
+];
 
-const handleClick = (key: 'close' | 'remove' | 'resize' | 'fullResize') => {
-  if (key === 'fullResize') screenfullFn()
+const handleClick = (key: ButtonKey) => {
+  if (key === "fullResize") screenfullFn();
   // 缩小并关闭全屏
-  if (key === 'remove') screenfullFn(true) && screenfullFn()
-  emit(key)
-}
+  if (key === "remove") screenfullFn(true) && screenfullFn();
+  emit(key);
+};
 </script>
 
 <style lang="scss" scoped>
-@include go('apple-control-btn') {
+@include go("apple-control-btn") {
   display: flex;
   &:hover {
     .btn {

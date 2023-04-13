@@ -1,16 +1,16 @@
-@import './config.scss';
-@import './function.scss';
-@import '../theme.scss';
+@import "./config.scss";
+@import "./function.scss";
+@import "../theme.scss";
 
 @mixin go($block) {
-  $B: $namespace + '-' + $block;
+  $B: $namespace + "-" + $block;
   .#{$B} {
     @content;
   }
 }
 
 @mixin goId($block) {
-  $B: $namespace + '-' + $block;
+  $B: $namespace + "-" + $block;
   ##{$B} {
     @content;
   }
@@ -33,8 +33,17 @@
 @mixin themeify {
   @each $theme-name, $theme-map in $themes {
     $theme-map: $theme-map !global;
-    [data-theme='#{$theme-name}'] & {
+    [data-theme="#{$theme-name}"] & {
       @content;
+    }
+  }
+}
+
+@mixin hoverScale($block, $scale: 1.1) {
+  @include go($block) {
+    @extend .go-transition;
+    &:hover {
+      transform: scale($scale);
     }
   }
 }
@@ -45,7 +54,7 @@
   }
 }
 
-@mixin fetch-theme-custom ($key, $value) {
+@mixin fetch-theme-custom($key, $value) {
   @include themeify {
     #{$key}: themed($value);
   }

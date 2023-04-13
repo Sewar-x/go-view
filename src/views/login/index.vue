@@ -311,7 +311,7 @@ $carousel-image-height: 60vh;
       }
 
       &-card {
-        transition: all 0.8s;
+        @extend .go-transition;
         &:hover {
           transform: scale(1.1);
           box-shadow: #90939918 0px 15px 25px, #60626634 0px 5px 10px;
