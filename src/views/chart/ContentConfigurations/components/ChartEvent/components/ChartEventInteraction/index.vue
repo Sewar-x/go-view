@@ -129,7 +129,7 @@ import { RequestParamsTypeEnum } from '@/enums/httpEnum'
 import { InteractEventOn, COMPONENT_INTERACT_EVENT_KET } from '@/enums/eventEnum'
 import { icon } from '@/plugins'
 import noData from '@/assets/images/canvas/noData.png'
-import { goDialog } from '@/utils'
+import { Dialog } from '@/utils'
 import { useTargetData } from '../../../hooks/useTargetData.hook'
 
 const { CloseIcon, AddIcon, HelpOutlineIcon } = icon.ionicons5
@@ -208,7 +208,7 @@ const evAddEventsFn = () => {
 
 // 删除模块
 const evDeleteEventsFn = (index: number) => {
-  goDialog({
+  Dialog({
     message: '是否删除此关联交互模块?',
     onPositiveCallback: () => {
       targetData.value.events.interactEvents.splice(index, 1)

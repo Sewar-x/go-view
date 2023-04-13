@@ -105,7 +105,7 @@ import { ref, computed, watch, toRef, toRefs, toRaw, reactive } from 'vue'
 import { useTargetData } from '../../../hooks/useTargetData.hook'
 import { MonacoEditor } from '@/components/Pages/MonacoEditor'
 import { icon } from '@/plugins'
-import { goDialog, toString } from '@/utils'
+import { Dialog, toString } from '@/utils'
 import { customizeHttp } from '@/api/http'
 import cloneDeep from 'lodash/cloneDeep'
 
@@ -162,7 +162,7 @@ const addFilter = () => {
 
 // 删除过滤器
 const delFilter = () => {
-  goDialog({
+  Dialog({
     message: '是否删除过滤器',
     onPositiveCallback: () => {
       targetData.value.filter = undefined

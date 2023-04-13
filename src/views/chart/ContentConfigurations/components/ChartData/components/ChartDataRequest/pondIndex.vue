@@ -49,7 +49,7 @@ import { RequestGlobalConfig } from './components/RequestGlobalConfig'
 import { RequestTargetConfig } from './components/RequestTargetConfig'
 import { RequestDataPondItemType } from '@/store/modules/chartEditStore/chartEditStore.d'
 import { useSync } from '@/views/chart/hooks/useSync.hook'
-import { goDialog } from '@/utils'
+import { Dialog } from '@/utils'
 
 const props = defineProps({
   modelShow: Boolean,
@@ -77,7 +77,7 @@ const closeAndSendHandle = () => {
     inputInstRef.value?.focus()
     return
   }
-  goDialog({
+  Dialog({
     message: '保存内容将同步修改所有使用此接口的组件, 是否继续?',
     isMaskClosable: true,
     transformOrigin: 'center',

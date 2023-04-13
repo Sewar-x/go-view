@@ -30,12 +30,12 @@ export const loadingError = () => {
  * @param { Object} params 配置参数, 详见 https://www.naiveui.com/zh-CN/light/components/dialog
  * ```
  * 最简易的 demo
- * goDialog({
+ * Dialog({
  *    onPositiveCallback: () => {}
  * })
  * ```
  */
- export const goDialog = (
+ export const Dialog = (
   params: {
     // 基本
     type?: DialogEnum
@@ -52,7 +52,7 @@ export const loadingError = () => {
     // 点击遮罩是否关闭
     isMaskClosable?: boolean
     // 回调
-    onPositiveCallback: Function
+    onPositiveCallback?: Function
     onNegativeCallback?: Function
     // 异步
     promise?: boolean

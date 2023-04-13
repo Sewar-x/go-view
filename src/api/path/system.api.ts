@@ -6,9 +6,10 @@ import { LoginResult } from './system'
 // * 登录
 export const loginApi = async (data: object) => {
   try {
-    return await http(RequestHttpEnum.POST)<LoginResult>(`${ModuleTypeEnum.SYSTEM}/login`, data)
+    const res =  await http(RequestHttpEnum.POST)<LoginResult>(`${ModuleTypeEnum.SYSTEM}/login`, data)
+    return res
   } catch (err) {
-    httpErrorHandle()
+    httpErrorHandle(err?.response?.data?.msg)
   }
 }
 

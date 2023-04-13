@@ -3,7 +3,7 @@ import { ref, reactive } from 'vue'
 import { ListConfigEnum } from '@/enums/listEnum'
 import { DialogEnum } from '@/enums/pluginEnum'
 import { ResultEnum } from '@/enums/httpEnum'
-import { goDialog, httpErrorHandle } from '@/utils'
+import { Dialog, httpErrorHandle } from '@/utils'
 
 //列表返回数据对象类型
 type ListItemType = {
@@ -89,7 +89,7 @@ export default (apis: ListInitType) => {
         params: ListParamsInitType = {}
     ) => {
         //弹窗提示
-        goDialog({
+        Dialog({
             type: DialogEnum.DELETE,
             promise: true,
             onPositiveCallback: () =>

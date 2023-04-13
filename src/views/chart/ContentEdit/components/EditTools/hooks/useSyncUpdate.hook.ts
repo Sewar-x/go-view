@@ -7,13 +7,13 @@ import { useSync } from '@/views/chart/hooks/useSync.hook'
 import { ChartEnum } from '@/enums/pageEnum'
 import { SavePageEnum } from '@/enums/editPageEnum'
 import { editToJsonInterval } from '@/settings/designSetting'
-import { goDialog } from '@/utils'
+import { Dialog } from '@/utils'
 
 const { updateComponent, dataSyncUpdate } = useSync()
 const chartEditStore = useChartEditStore()
 
 export const syncData = () => {
-  goDialog({
+  Dialog({
     message: '是否覆盖源视图内容，此操作不可撤回?',
     isMaskClosable: true,
     transformOrigin: 'center',

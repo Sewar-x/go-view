@@ -53,7 +53,7 @@
 
 <script setup lang="ts">
 import { toRefs, ref, Ref, reactive, computed } from 'vue'
-import { renderIcon, goDialog, goHome } from '@/utils'
+import { renderIcon, Dialog, goHome } from '@/utils'
 import { icon } from '@/plugins'
 import { useRemoveKeyboard } from '../../hooks/useKeyboard.hook'
 import { useSync } from '../../hooks/useSync.hook'
@@ -147,7 +147,7 @@ const clickHistoryHandle = (item: ItemType<HistoryStackEnum>) => {
 
 // 返回首页
 const goHomeHandle = () => {
-  goDialog({
+  Dialog({
     message: '确定已保存了数据（Ctrl / ⌘ + S），并返回到首页吗？',
     isMaskClosable: true,
     onPositiveCallback: () => {

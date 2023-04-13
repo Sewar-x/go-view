@@ -17,7 +17,7 @@ export default ({ mode }) => defineConfig({
   resolve: {
     alias: [
       {
-        find: /\/#\//,
+        find: '#',
         replacement: pathResolve('types')
       },
       {
@@ -53,7 +53,7 @@ export default ({ mode }) => defineConfig({
         ws: true,
         secure: true,
       }
-     
+
     }
   },
   plugins: [

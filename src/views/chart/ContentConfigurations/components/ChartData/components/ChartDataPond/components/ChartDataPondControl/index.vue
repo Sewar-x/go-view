@@ -55,7 +55,7 @@ import { useTargetData } from '@/views/chart/ContentConfigurations/components/ho
 import { RequestDataPondItemType } from '@/store/modules/chartEditStore/chartEditStore.d'
 import { RequestDataTypeEnum } from '@/enums/httpEnum'
 import { icon } from '@/plugins'
-import { getUUID, goDialog } from '@/utils'
+import { getUUID, Dialog } from '@/utils'
 import { cloneDeep } from 'lodash'
 
 const props = defineProps({
@@ -172,7 +172,7 @@ const createSaveHandle = (newData: RequestDataPondItemType) => {
 
 // 删除数据池
 const deletePond = (targetData: RequestDataPondItemType) => {
-  goDialog({
+  Dialog({
     message: '删除数据后，需手动处理使用改接口的组件，是否继续？',
     isMaskClosable: true,
     transformOrigin: 'center',

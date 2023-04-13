@@ -13,7 +13,7 @@
             @preview="previewHandle"
             @resize="resizeHandle"
             @delete="deleteHandle(item)"
-            @release="releaseHandle(item, index)"
+            @release="releaseHandle(item, Number(index))"
             @edit="editHandle"
           ></project-items-card>
         </n-grid-item>

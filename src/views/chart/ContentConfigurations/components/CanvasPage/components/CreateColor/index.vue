@@ -104,7 +104,7 @@
 import { ref, watch, computed, reactive, nextTick, onMounted } from 'vue'
 import cloneDeep from 'lodash/cloneDeep'
 import noData from '@/assets/images/canvas/noData.png'
-import { getUUID, goDialog } from '@/utils'
+import { getUUID, Dialog } from '@/utils'
 import { icon } from '@/plugins'
 import { UvIndex } from '@vicons/carbon'
 import { useChartEditStore } from '@/store/modules/chartEditStore/chartEditStore'
@@ -163,7 +163,7 @@ const selectThemeColor = computed(() => chartEditStore.getEditCanvasConfig.chart
 const selectHandle = (item: ColorType) => {
   if (item.id === selectColorId.value) return
   if (updateColor.value !== undefined) {
-    goDialog({
+    Dialog({
       message: '当前有变动未保存，是否直接放弃修改？',
       onPositiveCallback: () => {
         updateColor.value = undefined
@@ -186,7 +186,7 @@ const createColor = () => {
     saveHandle(false)
   }
   if (updateColor.value !== undefined) {
-    goDialog({
+    Dialog({
       message: '当前有变动未保存，是否直接放弃修改？',
       onPositiveCallback: () => {
         updateColor.value = undefined
@@ -213,7 +213,7 @@ const deleteHandle = (index: number) => {
     })
   }
   if (updateColor.value !== undefined) {
-    goDialog({
+    Dialog({
       message: '当前有变动未保存，是否直接放弃修改？',
       onPositiveCallback: () => {
         updateColor.value = undefined
@@ -221,7 +221,7 @@ const deleteHandle = (index: number) => {
       }
     })
   } else {
-    goDialog({
+    Dialog({
       message: `是否删除此颜色？`,
       onPositiveCallback: () => {
         positiveHandle()
@@ -266,7 +266,7 @@ const closeHandle = () => {
   }
 
   if (updateColor.value !== undefined) {
-    goDialog({
+    Dialog({
       message: '当前有变动未保存，是否直接放弃修改？',
       onPositiveCallback: () => {
         positiveHandle()

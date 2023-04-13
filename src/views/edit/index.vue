@@ -46,7 +46,7 @@ import { ref } from 'vue'
 import { MonacoEditor } from '@/components/Pages/MonacoEditor'
 import { SavePageEnum } from '@/enums/editPageEnum'
 import { getSessionStorageInfo } from '../preview/utils'
-import { setSessionStorage, fetchRouteParamsLocation, JSONStringify, JSONParse, setTitle, goDialog } from '@/utils'
+import { setSessionStorage, fetchRouteParamsLocation, JSONStringify, JSONParse, setTitle, Dialog } from '@/utils'
 import { StorageEnum } from '@/enums/storageEnum'
 import { icon } from '@/plugins'
 import { useSync } from '@/views/chart/hooks/useSync.hook'
@@ -79,7 +79,7 @@ function back() {
 
 // 导入json文本
 function importJSON() {
-  goDialog({
+  Dialog({
     message: '导入数据将覆盖内容，此操作不可撤回，是否继续？',
     isMaskClosable: true,
     transformOrigin: 'center',
@@ -124,7 +124,7 @@ async function updateSync() {
   if (!window.opener) {
     return window['$message'].error('源窗口已关闭，视图同步失败！')
   }
-  goDialog({
+  Dialog({
     message: '是否覆盖源视图内容? 此操作不可撤！',
     isMaskClosable: true,
     transformOrigin: 'center',

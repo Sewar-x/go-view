@@ -1,10 +1,7 @@
-import { ref, reactive } from 'vue'
-import { goDialog, httpErrorHandle } from '@/utils'
+import { httpErrorHandle } from '@/utils'
 import { projectListApi, deleteProjectApi, changeProjectReleaseApi } from '@/api/path'
-import { Chartype, ChartList } from '../../../index.d'
-import { DialogEnum } from '@/enums/pluginEnum'
+import { Chartype } from '../../../index.d'
 import { ResultEnum } from '@/enums/httpEnum'
-import { ListConfigEnum } from '@/enums/listEnum'
 import useListInit from '@/hooks/useListInit.hook'
 // 数据初始化
 export const useDataListInit = () => {
