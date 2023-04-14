@@ -6,9 +6,14 @@
         :class="[item.key, disabled && 'disabled', mini && 'mini']"
         @click.stop="handleClick(item.key)"
       >
-        <n-icon size="10" class="icon-base" :class="{ hover: !disabled }">
-          <component :is="item.icon"></component>
-        </n-icon>
+        <n-tooltip trigger="hover">
+          <template #trigger>
+            <n-icon size="10" class="icon-base" :class="{ hover: !disabled }">
+              <component :is="item.icon"></component>
+            </n-icon>
+          </template>
+          <div>{{ item.title }}</div>
+        </n-tooltip>
       </div>
     </template>
   </div>
@@ -107,15 +112,15 @@ const handleClick = (key: ButtonKey) => {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     margin: 0 4px;
     color: $--color-text;
     font-weight: bold;
     border-radius: 50%;
     &.mini {
-      width: 8px;
-      height: 8px;
+      width: 14px;
+      height: 14px;
       margin: 0 2px;
     }
     &.disabled {

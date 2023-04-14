@@ -23,12 +23,13 @@
           ></n-image>
         </div>
       </div>
+      <!-- 底部操作按钮 -->
       <template #action>
         <div class="go-flex-items-center list-footer" justify="space-between">
           <n-text class="go-ellipsis-1">
             {{ cardData.title || cardData.id || "未命名" }}
           </n-text>
-          <!-- 工具 -->
+          <!-- 状态 -->
           <div class="go-flex-items-center list-footer-ri">
             <n-space>
               <n-text>
@@ -39,8 +40,9 @@
                 ></n-badge>
                 {{ cardData.release ? $t("project.release") : $t("project.unreleased") }}
               </n-text>
-
+              <!-- 操作按钮 -->
               <template v-for="item in fnBtnList" :key="item.key">
+                <!-- 下拉选择操作按钮 -->
                 <template v-if="item.key === 'select'">
                   <n-dropdown
                     trigger="hover"
@@ -56,7 +58,7 @@
                     </n-button>
                   </n-dropdown>
                 </template>
-
+                <!-- 编辑模板操作按钮 -->
                 <n-tooltip v-else placement="bottom" trigger="hover">
                   <template #trigger>
                     <n-button size="small" @click="handleSelect(item.key)">

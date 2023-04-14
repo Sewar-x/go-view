@@ -6,7 +6,13 @@
     </div>
     <!-- 列表 -->
     <div v-show="!loading">
-      <n-grid :x-gap="20" :y-gap="20" cols="2 s:2 m:3 l:4 xl:4 xxl:4" responsive="screen">
+      <n-grid
+        v-if="!list || list.length !== 0"
+        :x-gap="20"
+        :y-gap="20"
+        cols="2 s:2 m:3 l:4 xl:4 xxl:4"
+        responsive="screen"
+      >
         <n-grid-item v-for="(item, index) in list" :key="item.id">
           <project-items-card
             :cardData="item"
@@ -18,10 +24,11 @@
           ></project-items-card>
         </n-grid-item>
       </n-grid>
+      <EmptyImage v-else title="您还没有项目呢，快去创建一个项目吧~" />
     </div>
 
     <!-- 分页 -->
-    <div class="list-pagination">
+    <div class="list-pagination" v-if="!list || list.length !== 0">
       <n-pagination
         :page="paginat.page"
         :page-size="paginat.limit"
@@ -34,7 +41,7 @@
     </div>
   </div>
 
-  <!-- model -->
+  <!-- 弹窗显示预览图 -->
   <project-items-modal-card
     v-if="modalData"
     :modalShow="modalShow"
@@ -45,20 +52,35 @@
 </template>
 
 <script setup lang="ts">
-import { ProjectItemsCard } from '../ProjectItemsCard/index'
-import { ProjectItemsModalCard } from '../ProjectItemsModalCard/index'
-import { icon } from '@/plugins'
-import { useModalDataInit } from './hooks/useModal.hook'
-import { useDataListInit } from './hooks/useData.hook'
-
-const { CopyIcon, EllipsisHorizontalCircleSharpIcon } = icon.ionicons5
-const { modalData, modalShow, closeModal, previewHandle, resizeHandle, editHandle } = useModalDataInit()
-const { loading, paginat, list, changeSize, changePage, releaseHandle, deleteHandle } = useDataListInit()
+import { ProjectItemsCard } from "../ProjectItemsCard/index";
+import { ProjectItemsModalCard } from "../ProjectItemsModalCard/index";
+import { icon } from "@/plugins";
+import { useModalDataInit } from "./hooks/useModal.hook";
+import { useDataListInit } from "./hooks/useData.hook";
+import { EmptyImage } from "@/components/Pages/Empty";
+const { CopyIcon, EllipsisHorizontalCircleSharpIcon } = icon.ionicons5;
+const {
+  modalData,
+  modalShow,
+  closeModal,
+  previewHandle,
+  resizeHandle,
+  editHandle,
+} = useModalDataInit();
+const {
+  loading,
+  paginat,
+  list,
+  changeSize,
+  changePage,
+  releaseHandle,
+  deleteHandle,
+} = useDataListInit();
 </script>
 
 <style lang="scss" scoped>
 $contentHeight: 250px;
-@include go('items-list') {
+@include go("items-list") {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

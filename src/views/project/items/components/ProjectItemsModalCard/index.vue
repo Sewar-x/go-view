@@ -8,7 +8,7 @@
     <n-card hoverable size="small">
       <div class="list-content">
         <!-- 标题 -->
-        <n-space class="list-content-top go-px-0" justify="center">
+        <n-space class="list-content-title go-px-0" justify="center">
           <n-space>
             <n-text>
               {{ cardData?.title || cardData?.id || '未命名' }}
@@ -16,14 +16,14 @@
           </n-space>
         </n-space>
         <!-- 顶部按钮 -->
-        <n-space class="list-content-top">
+        <n-space class="list-content-buttons">
           <mac-os-control-btn
             :narrow="true"
             :hidden="['close']"
             @remove="closeHandle"
          ></mac-os-control-btn>
         </n-space>
-        <!-- 中间 -->
+        <!-- 中间预览图 -->
         <div class="list-content-img">
           <img
             :src="cardData?.image"
@@ -31,6 +31,7 @@
           />
         </div>
       </div>
+       <!-- 底部按钮 -->
       <template #action>
         <n-space class="list-footer" justify="space-between">
           <n-text depth="3">
@@ -139,23 +140,32 @@ const closeHandle = () => {
 <style lang="scss" scoped>
 $padding: 30px;
 $contentHeight: calc(80vh);
-$imageHeight: calc(80vh - 110px);
+$imageHeight: calc(80vh - 130px);
 $contentWidth: calc(82vw);
 
 @include go('modal-box') {
   width: $contentWidth;
   height: $contentHeight;
   .list-content {
-    margin-top: 20px;
+    margin-top: 30px;
     border-radius: $--border-radius-base;
     overflow: hidden;
     @include background-image('background-point');
     @extend .go-point-bg;
-    &-top {
+    &-title {
       position: absolute;
+      top: 10px;
+      right: 0px;
+      padding-right: 10px;
+      height: 22px;
+      width: $contentWidth;
+    }
+    &-buttons {
+      position: absolute;
+      justify-content: flex-end !important;
       top: 7px;
-      left: 0px;
-      padding-left: 10px;
+      right: 0px;
+      padding-right: 10px;
       height: 22px;
       width: $contentWidth;
     }
