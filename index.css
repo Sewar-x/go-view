@@ -1,8 +1,20 @@
 * {
   margin: 0;
 }
+
+.first-app-loading-logo {
+  width: 200px;
+  height: 200px;
+}
+
+.first-slogan {
+  margin-top: 15px;
+  font-size: 38px;
+  color: white;
+}
 .first-loading-wrp {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -12,7 +24,7 @@
   font-size: 128px;
 }
 .first-loading-wrp .loading-wrp {
-  padding: 98px;
+  padding: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,14 +34,14 @@
   transform: rotate(45deg);
   position: relative;
   display: inline-block;
-  font-size: 32px;
-  width: 32px;
-  height: 32px;
+  font-size: 52px;
+  width: 52px;
+  height: 52px;
   box-sizing: border-box;
 }
 .dot i {
-  width: 14px;
-  height: 14px;
+  width: 20px;
+  height: 20px;
   position: absolute;
   display: block;
   background-color: #1890ff;

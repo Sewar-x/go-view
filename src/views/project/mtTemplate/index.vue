@@ -1,5 +1,5 @@
 <template>
-  <EmptyImage />
+  <EmptyImage lottie/>
 </template>
 
 <script setup lang="ts">

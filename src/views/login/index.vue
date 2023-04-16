@@ -26,16 +26,8 @@
     <!-- 登录内容 -->
     <div class="go-login">
       <!-- 登录左侧轮播图 -->
-      <div class="go-login-carousel">
-        <n-carousel autoplay dot-type="line" :interval="Number(carouselInterval)">
-          <img
-            v-for="(item, i) in carouselImgList"
-            :key="i"
-            class="go-login-carousel-img"
-            :src="getImageUrl(item, 'login')"
-            alt="image"
-          />
-        </n-carousel>
+      <div class="go-login-lottie">
+        <Vue3Lottie :animationData="bgLottie" :height="600" :width="600" />
       </div>
       <!-- 登录框 -->
       <div class="login-account">
@@ -136,7 +128,7 @@ import { StorageEnum } from "@/enums/storageEnum";
 import { icon } from "@/plugins";
 import { routerTurnByName } from "@/utils";
 import { loginApi } from "@/api/path";
-
+import bgLottie from "@/assets/lottie/bg.json";
 interface FormState {
   username: string;
   password: string;
@@ -174,9 +166,6 @@ const rules = {
 
 // 定时器
 const shuffleTimiing = ref();
-
-// 轮播图
-const carouselImgList = ["one", "two", "three"];
 
 // 背景图
 const bgList = ref([
@@ -259,7 +248,6 @@ $footer-height: 50px;
 $carousel-width: 33%;
 $carousel-image-height: 60vh;
 
-
 @include go(login-box) {
   height: $go-login-height;
   overflow: hidden;
@@ -289,10 +277,10 @@ $carousel-image-height: 60vh;
     margin-top: -$--header-height;
     height: $go-login-height;
     width: 100vw;
-    &-carousel {
+    &-lottie {
       position: fixed;
       top: 10vh;
-      left: 5vw;
+      right: 12vw;
       width: $carousel-width;
       margin-top: 100px;
       min-width: 500px;
@@ -306,6 +294,7 @@ $carousel-image-height: 60vh;
       display: flex;
       flex-direction: column;
       margin: 0 160px;
+      z-index: 10;
       &-container {
         width: $width;
       }
@@ -357,7 +346,7 @@ $carousel-image-height: 60vh;
     width: 100%;
     bottom: 0;
   }
-
+  // 登录背景
   &-bg {
     z-index: 0;
     position: fixed;
@@ -366,12 +355,13 @@ $carousel-image-height: 60vh;
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background: url("@/assets/images/login/login-bg.png") no-repeat 0 -120px;
+    background: url("@/assets/images/login/login-bg.png") no-repeat 55vw -2vh;
     .bg-slot {
       width: $carousel-width;
     }
     .bg-img-box {
-      position: relative;
+      position: absolute;
+      left: 7vw;
       display: flex;
       flex-wrap: wrap;
       width: 770px;
@@ -391,7 +381,7 @@ $carousel-image-height: 60vh;
 @media only screen and (max-width: 1200px) {
   .bg-img-box,
   .bg-slot,
-  .go-login-carousel {
+  .go-login-lottie {
     display: none !important;
   }
   .go-login-box-footer {

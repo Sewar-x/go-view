@@ -3,7 +3,9 @@ import { NIcon } from 'naive-ui'
 import screenfull from 'screenfull'
 import throttle from 'lodash/throttle'
 import Image_404 from '@/assets/images/exception/image-404.png'
+import lottie_404 from '@/assets/lottie/sed-faild.json'
 import Image_Empty from "@/assets/images/canvas/noData.png";
+import lottie_Empty from "@/assets/lottie/noresult.json";
 import html2canvas from 'html2canvas'
 import { downloadByA } from './file'
 import { toString } from './type'
@@ -51,16 +53,16 @@ export const renderLang = (lang: string, set = {}, tag = 'span') => {
  * * 获取错误处理图片，默认 404 图
  * @returns url
  */
-export const requireErrorImg = () => {
-  return Image_404
+export const requireErrorImg = (lottie = false) => {
+  return lottie? lottie_404 : Image_404
 }
 
 /**
  * * 获取空处理处理图片，默认 404 图
  * @returns url
  */
-export const requireEmptyImg = () => {
-  return Image_Empty
+export const requireEmptyImg = (lottie = false) => {
+  return   lottie? lottie_Empty : Image_Empty
 }
 
 

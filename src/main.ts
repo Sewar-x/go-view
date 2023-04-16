@@ -3,24 +3,18 @@ import App from './App.vue'
 import router, { setupRouter } from '@/router'
 import i18n from '@/i18n/index'
 import { setupStore } from '@/store'
-import { setupNaive, setupDirectives, setupCustomComponents, initFunction } from '@/plugins'
+import { setupComponents, setupDirectives, setupCustomComponents, initFunction } from '@/plugins'
 import { GoAppProvider } from '@/components/GoAppProvider/index'
 import { setHtmlTheme } from '@/utils'
 
-// 引入全局样式
-import '@/styles/pages/index.scss'
-// 引入动画
-import 'animate.css/animate.min.css'
-// 引入标尺
-import 'vue3-sketch-ruler/lib/style.css'
+
 
 async function appInit() {
   const goAppProvider = createApp(GoAppProvider)
 
   const app = createApp(App)
-
-  // 注册全局常用的 naive-ui 组件
-  setupNaive(app)
+  //注册全局组件
+  setupComponents(app)
 
   // 注册全局自定义指令
   setupDirectives(app)

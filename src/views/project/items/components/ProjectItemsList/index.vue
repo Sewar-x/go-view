@@ -24,7 +24,7 @@
           ></project-items-card>
         </n-grid-item>
       </n-grid>
-      <EmptyImage v-else title="您还没有项目呢，快去创建一个项目吧~" />
+      <EmptyImage v-else lottie title="您还没有项目呢，快去创建一个项目吧~" />
     </div>
 
     <!-- 分页 -->
