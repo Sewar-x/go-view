@@ -11,12 +11,14 @@ const storageSystem: SystemStoreType = getLocalStorage(GO_SYSTEM_STORE)
 export const useSystemStore = defineStore({
   id: 'useSystemStore',
   state: (): SystemStoreType => storageSystem || {
+    //用户信息
     userInfo: {
       userId: undefined,
       userName: undefined,
       userToken: undefined,
       nickName: undefined
     },
+    // 接口信息
     fetchInfo: {
       OSSUrl: undefined
     }

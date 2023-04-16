@@ -7,12 +7,24 @@ export enum ModuleTypeEnum {
 // 请求结果集
 export enum ResultEnum {
   DATA_SUCCESS = 0,
-  SUCCESS = 200,
-  SERVER_ERROR = 500,
-  SERVER_FORBIDDEN = 403,
-  NOT_FOUND = 404,
-  TOKEN_OVERDUE = 886,
+  SUCCESS = 200, //: 请求成功。
+  SERVER_ERROR = 500,//：服务器内部错误。
+  SERVER_FORBIDDEN = 403, //：拒绝访问，权限不足。
+  NOT_FOUND = 404,//：找不到请求的资源。
   TIMEOUT = 60000,
+  /**
+   * 以下是一些常见的标准的 token 错误码：
+   * 401 Unauthorized：没有提供 token 或者提供的 token 无效。
+   * 403 Forbidden：提供的 token 是有效的，但用户没有足够的权限访问所请求的资源。
+   * 419 Authentication Timeout（或 440 Login Timeout）：token 已过期或超时。\
+   * 498 Invalid Token：提供的 token 无效。
+   * 499 Token Required：没有提供 token。
+   * 500 Internal Server Error：服务器在尝试验证 token 时遇到了内部错误。
+   */
+  TOKEN_UNAUTHORIZED = 401,//没有提供 token 或者提供的 token 无效。
+  TOKEN_AUTHENTICATION_TIMEOUT = 419, //（或 440 Login Timeout）：token 已过期或超时
+  TOKEN_INVALID = 498,//提供的 token 无效。
+  Token_Required = 499,//没有提供 token。
 }
 
 // 数据相关

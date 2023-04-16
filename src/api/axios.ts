@@ -57,7 +57,7 @@ axiosInstance.interceptors.response.use(
     }
 
     // 登录过期
-    if (code === ResultEnum.TOKEN_OVERDUE) {
+    if (code === ResultEnum.TOKEN_AUTHENTICATION_TIMEOUT) {
       Dialog({
         message: window['$t']('http.token_overdue_message'),
       })
