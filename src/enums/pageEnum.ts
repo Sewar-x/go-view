@@ -47,7 +47,7 @@ export enum PageEnum {
   BASE_HOME_TEMPLATE = '/project/my-template',
   BASE_HOME_TEMPLATE_NAME = 'Project-My-Template',
 
-  // 模板市场
+  // 开放模板
   BASE_HOME_TEMPLATE_MARKET = '/project/template-market',
   BASE_HOME_TEMPLATE_MARKET_NAME = 'Project-Template-Market',
 

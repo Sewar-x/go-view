@@ -61,7 +61,11 @@
                 <!-- 编辑模板操作按钮 -->
                 <n-tooltip v-else placement="bottom" trigger="hover">
                   <template #trigger>
-                    <n-button size="small" @click="handleSelect(item.key)">
+                    <n-button
+                      :disabled="!cardData.created"
+                      size="small"
+                      @click="handleSelect(item.key)"
+                    >
                       <template #icon>
                         <component :is="item.icon"></component>
                       </template>
@@ -95,12 +99,13 @@ const {
   HammerIcon,
   SendIcon,
 } = icon.ionicons5;
-
-const emit = defineEmits(["preview", "delete", "resize", "edit", "release"]);
+const { TemplateIcon } = icon.carbon;
+const emit = defineEmits(["preview", "delete", "resize", "edit", "release","setTemplate"]);
 
 const props = defineProps({
   cardData: Object as PropType<Chartype>,
 });
+
 //按钮组
 const fnBtnList = reactive([
   {
@@ -120,6 +125,7 @@ const selectOptions = ref([
     label: renderLang("global.r_preview"),
     key: "preview", //预览
     icon: renderIcon(BrowsersOutlineIcon),
+    disabled: !props.cardData?.created,
   },
   {
     label: renderLang("global.r_copy"),
@@ -143,6 +149,13 @@ const selectOptions = ref([
       : renderLang("global.r_publish"),
     key: "release", //发布
     icon: renderIcon(SendIcon),
+    disabled: !props.cardData?.created,
+  },
+  {
+    label: renderLang("global.set_template"),
+    key: "setTemplate", //发布
+    icon: renderIcon(TemplateIcon),
+    disabled: !props.cardData?.created,
   },
   {
     label: renderLang("global.r_download"),
@@ -158,6 +171,7 @@ const selectOptions = ref([
     label: renderLang("global.r_delete"),
     key: "delete", //删除
     icon: renderIcon(TrashIcon),
+    disabled: !props.cardData?.created,
   },
 ]);
 
@@ -169,6 +183,7 @@ const handleSelect = (key: string) => {
     delete: deleteHandle,
     release: releaseHandle,
     edit: editHandle,
+    setTemplate:setTemplateHandle
   };
   const method = methodMap[key];
   method && method();
@@ -189,9 +204,14 @@ const editHandle = () => {
   emit("edit", props.cardData);
 };
 
-// 编辑处理
+// 发布处理
 const releaseHandle = () => {
   emit("release", props.cardData);
+};
+
+// 设为模板处理
+const setTemplateHandle = () => {
+  emit("setTemplate", props.cardData);
 };
 
 // 放大处理

@@ -3,12 +3,12 @@ import { ResultEnum } from "@/enums/httpEnum"
 import { PageEnum, ErrorPageNameMap } from "@/enums/pageEnum"
 import { StorageEnum } from '@/enums/storageEnum'
 import { axiosPre } from '@/settings/httpSetting'
-import { SystemStoreEnum, SystemStoreUserInfoEnum } from '@/store/modules/systemStore/systemStore.d'
-import { redirectErrorPage, getLocalStorage, routerTurnByName, isPreview } from '@/utils'
+import { redirectErrorPage, routerTurnByName, isPreview } from '@/utils'
+import { getToken } from '@/utils/auth'
 import { fetchAllowList } from './axios.config'
 import includes from 'lodash/includes'
 import { Dialog } from '@/utils'
-import type { RequestInstance } from '#/axios'
+import type { RequestInstance } from '#/axios.d'
 
 
 const axiosInstance = axios.create({
@@ -22,16 +22,15 @@ axiosInstance.interceptors.request.use(
     // 白名单校验
     if (includes(fetchAllowList, config.url)) return config
     // 获取 token
-    const info = getLocalStorage(StorageEnum.GO_SYSTEM_STORE)
+    const token = getToken(StorageEnum.TOKEN_KEY)
     // 重新登录
-    if (!info) {
+    if (!token) {
       routerTurnByName(PageEnum.BASE_LOGIN_NAME)
       return config
     }
-    const userInfo = info[SystemStoreEnum.USER_INFO]
+    //所有请求带上 token
     config.headers = {
-      ...config.headers,
-      [userInfo[SystemStoreUserInfoEnum.TOKEN_NAME] || 'token']: userInfo[SystemStoreUserInfoEnum.USER_TOKEN] || ''
+      authorization: token
     }
     return config
   },

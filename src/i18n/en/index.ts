@@ -26,6 +26,7 @@ const global = {
   r_download: 'Download',
   r_delete: 'Delete',
   r_more: 'More',
+  set_template: 'Set Template',
 }
 
 const http = {

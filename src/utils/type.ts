@@ -31,3 +31,16 @@ export const toNumber = (number: number | string, toFixedNumber = 2) => {
 export const toString = (str: any) => {
   return isNumber(str) ? `${str}` : (isObject(str) ? JSON.stringify(str) : str)
 }
+
+/**
+ * 判断变量是否为函数
+ *  - Inspired:
+ *    https://github.com/jashkenas/underscore/blob/master/modules/isFunction.js
+ */
+export const isFunction = (functionToCheck: Function): boolean => {
+  const getType = {}
+  return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]'
+}
+
+
+

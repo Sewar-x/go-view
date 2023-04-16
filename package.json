@@ -32,6 +32,7 @@
     "gsap": "^3.11.3",
     "highlight.js": "^11.5.0",
     "html2canvas": "^1.4.1",
+    "js-cookie": "^3.0.1",
     "keymaster": "^1.6.2",
     "monaco-editor": "^0.33.0",
     "naive-ui": "2.34.3",
@@ -50,6 +51,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
+    "@types/js-cookie": "^3.0.3",
     "@types/node": "^16.11.26",
     "@types/three": "^0.144.0",
     "@typescript-eslint/eslint-plugin": "^5.18.0",

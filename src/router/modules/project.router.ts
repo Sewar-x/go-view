@@ -40,7 +40,7 @@ const projectRoutes: RouteRecordRaw = {
       name: PageEnum.BASE_HOME_TEMPLATE_MARKET_NAME,
       component: importPath[PageEnum.BASE_HOME_TEMPLATE_MARKET_NAME],
       meta: {
-        title: '模板市场'
+        title: '开放模板'
       }
     }
   ]

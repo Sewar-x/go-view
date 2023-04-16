@@ -22,7 +22,8 @@ export const useModalDataInit = () => {
 
   // 编辑处理
   const editHandle = (cardData: Chartype) => {
-    if (!cardData) return
+    // 数据不存在 或 项目不是当前用户创建的，不能编辑
+    if (!cardData || !cardData.created) return
     if (cardData.release) {
       Dialog({
         title: '温馨提示',

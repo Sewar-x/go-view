@@ -29,7 +29,8 @@ export const useDataListInit = () => {
         createId: createUserId,
         time: createTime,
         image: indexImage,
-        release: state !== -1
+        release: state !== -1,
+        ...e
       }
     })
   })
