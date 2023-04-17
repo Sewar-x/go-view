@@ -37,12 +37,14 @@
               <div class="login-account-top">
                 <img
                   class="login-account-top-logo"
-                  src="~@/assets/images/logo-blue.svg"
+                  :src="requireLogoImg()"
                   alt="展示图片"
                 />
                 <div class="title-container">
-                  <div class="title">MOKA MK</div>
-                  <div class="sub-title">Make your Application</div>
+                  <n-gradient-text class="title" type="info"> MOKA MK </n-gradient-text>
+                  <n-gradient-text class="sub-title" type="info">
+                    Make your Application
+                  </n-gradient-text>
                 </div>
               </div>
               <n-form
@@ -128,6 +130,7 @@ import { StorageEnum } from "@/enums/storageEnum";
 import { icon } from "@/plugins";
 import { routerTurnByName } from "@/utils";
 import { loginApi } from "@/api/path";
+import { requireLogoImg } from "@/utils/utils";
 import bgLottie from "@/assets/lottie/bg.json";
 interface FormState {
   username: string;

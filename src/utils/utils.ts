@@ -6,6 +6,8 @@ import Image_404 from '@/assets/images/exception/image-404.png'
 import lottie_404 from '@/assets/lottie/sed-faild.json'
 import Image_Empty from "@/assets/images/canvas/noData.png";
 import lottie_Empty from "@/assets/lottie/noresult.json";
+import logo_green from '@/assets/images/logo/logo.svg'
+import logo_blue from '@/assets/images/logo/logo-blue.svg'
 import html2canvas from 'html2canvas'
 import { downloadByA } from './file'
 import { toString, isFunction } from './type'
@@ -63,6 +65,14 @@ export const requireErrorImg = (lottie = false) => {
  */
 export const requireEmptyImg = (lottie = false) => {
   return lottie ? lottie_Empty : Image_Empty
+}
+
+/**
+ * * 获取空处理处理图片，默认 404 图
+ * @returns url
+ */
+export const requireLogoImg = (blue = true) => {
+  return blue ? logo_blue : logo_green
 }
 
 

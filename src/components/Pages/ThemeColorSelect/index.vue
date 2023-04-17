@@ -31,13 +31,9 @@
               :style="{ backgroundColor: designStore.appTheme }"
             ></div>
           </div>
-          <img :src="themeColorLogo" />
         </div>
       </div>
-      <div class="model-footer">
-        中国色列表来自于：
-        <n-a href="http://zhongguose.com" target="_blank">http://zhongguose.com</n-a>
-      </div>
+      
     </div>
   </n-modal>
 </template>
@@ -47,7 +43,6 @@ import { ref, computed, watch, toRefs } from 'vue'
 import { useDesignStore } from '@/store/modules/designStore/designStore'
 import { AppThemeColorType } from '@/store/modules/designStore/designStore.d'
 import { icon } from '@/plugins'
-import themeColorLogo from '@/assets/images/exception/theme-color.png'
 import { loadAsyncComponent } from '@/utils'
 import { useScroll } from '@vueuse/core'
 import designColor from '@/settings/designColor.json'

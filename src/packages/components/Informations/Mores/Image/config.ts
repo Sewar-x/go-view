@@ -2,7 +2,7 @@ import { PublicConfigClass } from '@/packages/public'
 import { CreateComponentType } from '@/packages/index.d'
 import { ImageConfig } from './index'
 import cloneDeep from 'lodash/cloneDeep'
-import logo from '@/assets/images/logo.svg'
+import logo from '@/assets/images/logo/logo.svg'
 
 export const option = {
   // 图片路径

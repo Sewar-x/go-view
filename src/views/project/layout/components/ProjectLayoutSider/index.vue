@@ -27,7 +27,7 @@
       </aside>
       <!-- 底部提示 -->
       <div class="sider-bottom">
-        
+        <ProjectLayoutAsideFooter :collapsed="collapsed"/>
       </div>
     </div>
   </n-layout-sider>
@@ -40,7 +40,7 @@ import { asideWidth } from "@/settings/designSetting";
 import { useRoute } from "vue-router";
 import { useSettingStore } from "@/store/modules/settingStore/settingStore";
 import { menuOptionsInit, expandedKeys } from "./menu";
-
+import { ProjectLayoutAsideFooter } from '../ProjectLayoutAsideFooter'
 const collapsed = ref<boolean>(false);
 const { getAsideCollapsedWidth } = toRefs(useSettingStore());
 
