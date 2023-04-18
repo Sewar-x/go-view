@@ -35,11 +35,11 @@ import { useChartEditStore } from '@/store/modules/chartEditStore/chartEditStore
 import { ProjectInfoEnum, EditCanvasConfigEnum } from '@/store/modules/chartEditStore/chartEditStore.d'
 import { updateProjectApi } from '@/api/path'
 import { useSync } from '../../hooks/useSync.hook'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 
 const chartEditStore = useChartEditStore()
 const { dataSyncUpdate } = useSync()
-const { FishIcon } = icon.ionicons5
+const { FishIcon } = Icon
 
 const focus = ref<boolean>(false)
 const inputInstRef = ref(null)

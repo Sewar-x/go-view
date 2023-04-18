@@ -60,7 +60,7 @@
 
 <script setup lang="ts">
 import { ref, toRefs, toRaw, onBeforeUnmount, computed, watchEffect } from 'vue'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { http, customizeHttp } from '@/api/http'
 import { SettingItemBox, SettingItem } from '@/components/Pages/ChartItemSetting'
 import { ChartDataPondControl } from './components/ChartDataPondControl'
@@ -70,7 +70,7 @@ import { ChartDataMatchingAndShow } from '../ChartDataMatchingAndShow'
 import { newFunctionHandle } from '@/utils'
 
 const designStore = useDesignStore()
-const { HelpOutlineIcon, FlashIcon, PulseIcon, FishIcon } = icon.ionicons5
+const { HelpOutlineIcon, FlashIcon, PulseIcon, FishIcon } = Icon
 const { targetData, chartEditStore } = useTargetData()
 
 const {

@@ -35,13 +35,13 @@ import { GoSystemSet } from '@/components/GoSystemSet/index'
 import { GoSystemInfo } from '@/components/GoSystemInfo/index'
 import Person from './person.png'
 
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 const {
   ChatboxEllipsesIcon,
   PersonIcon,
   LogOutOutlineIcon,
   SettingsSharpIcon
-} = icon.ionicons5
+} = Icon
 
 const t = window['$t']
 

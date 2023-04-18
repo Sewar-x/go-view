@@ -48,7 +48,7 @@ import { SavePageEnum } from '@/enums/editPageEnum'
 import { getSessionStorageInfo } from '../preview/utils'
 import { setSessionStorage, fetchRouteParamsLocation, JSONStringify, JSONParse, setTitle, Dialog } from '@/utils'
 import { StorageEnum } from '@/enums/storageEnum'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { useSync } from '@/views/chart/hooks/useSync.hook'
 import { useChartEditStore } from '@/store/modules/chartEditStore/chartEditStore'
 import { ProjectInfoEnum } from '@/store/modules/chartEditStore/chartEditStore.d'
@@ -57,7 +57,7 @@ import type { ChartEditStorageType } from '../preview/index.d'
 const chartEditStore = useChartEditStore()
 const { dataSyncUpdate } = useSync()
 
-const { ChevronBackOutlineIcon, DownloadIcon, AnalyticsIcon } = icon.ionicons5
+const { ChevronBackOutlineIcon, DownloadIcon, AnalyticsIcon } = Icon
 const showOpenFilePicker: Function = (window as any).showOpenFilePicker
 const content = ref('')
 

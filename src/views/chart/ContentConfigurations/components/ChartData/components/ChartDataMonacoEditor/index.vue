@@ -104,13 +104,13 @@
 import { ref, computed, watch, toRef, toRefs, toRaw, reactive } from 'vue'
 import { useTargetData } from '../../../hooks/useTargetData.hook'
 import { MonacoEditor } from '@/components/Pages/MonacoEditor'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { Dialog, toString } from '@/utils'
 import { customizeHttp } from '@/api/http'
 import cloneDeep from 'lodash/cloneDeep'
 
-const { DocumentTextIcon } = icon.ionicons5
-const { FilterIcon, FilterEditIcon } = icon.carbon
+const { DocumentTextIcon } = Icon
+const { FilterIcon, FilterEditIcon } = Icon
 const { targetData, chartEditStore } = useTargetData()
 const { requestDataType } = toRefs(targetData.value.request)
 const { requestOriginUrl } = toRefs(chartEditStore.getRequestGlobalConfig)

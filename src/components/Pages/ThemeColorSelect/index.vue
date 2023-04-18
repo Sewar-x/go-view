@@ -41,7 +41,7 @@
 import { ref, computed, watch, toRefs } from 'vue'
 import { useDesignStore } from '@/store/modules/designStore/designStore'
 import { AppThemeColorType } from '@/store/modules/designStore/designStore.d'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { loadAsyncComponent } from '@/utils'
 import { useScroll } from '@vueuse/core'
 import designColor from '@/settings/designColor.json'
@@ -49,7 +49,7 @@ import designColor from '@/settings/designColor.json'
 const ColorList = loadAsyncComponent(() =>
   import('./components/ColorList.vue')
 )
-const { ColorWandIcon, CloseIcon } = icon.ionicons5
+const { ColorWandIcon, CloseIcon } = Icon
 
 let splitNumber = 50
 

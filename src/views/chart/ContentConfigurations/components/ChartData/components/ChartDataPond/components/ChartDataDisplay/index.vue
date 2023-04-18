@@ -126,7 +126,7 @@
 
 <script setup lang="ts">
 import { PropType, ref, toRefs } from 'vue'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { MonacoEditor } from '@/components/Pages/MonacoEditor'
 import { SettingItemBox, SettingItem } from '@/components/Pages/ChartItemSetting'
 import { RequestDataPondItemType, RequestGlobalConfigType } from '@/store/modules/chartEditStore/chartEditStore.d'
@@ -145,7 +145,7 @@ const props = defineProps({
   targetData: Object as PropType<RequestDataPondItemType>
 })
 
-const { HelpOutlineIcon, FlashIcon, PulseIcon } = icon.ionicons5
+const { HelpOutlineIcon, FlashIcon, PulseIcon } = Icon
 const {
   requestUrl,
   requestInterval,

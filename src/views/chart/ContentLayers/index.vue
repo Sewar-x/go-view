@@ -78,10 +78,10 @@ import { MenuEnum, MouseEventButton, WinKeyboard, MacKeyboard } from '@/enums/ed
 import { LayersListItem } from './components/LayersListItem/index'
 import { LayersGroupListItem } from './components/LayersGroupListItem/index'
 
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 
-const { LayersIcon, GridIcon, ListIcon } = icon.ionicons5
-const { LaptopIcon } = icon.carbon
+const { LayersIcon, GridIcon, ListIcon } = Icon
+const { LaptopIcon } = Icon
 const chartLayoutStore = useChartLayoutStore()
 const chartEditStore = useChartEditStore()
 const { handleContextMenu, onClickOutSide } = useContextMenu()

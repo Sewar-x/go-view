@@ -71,9 +71,9 @@ import { SettingItemBox, SettingItem } from '@/components/Pages/ChartItemSetting
 import { useTargetData } from '@/views/chart/ContentConfigurations/components/hooks/useTargetData.hook'
 import { selectTypeOptions, selectTimeOptions } from '@/views/chart/ContentConfigurations/components/ChartData/index.d'
 import { RequestGlobalHeaderTable } from '../RequestGlobalHeaderTable'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 
-const { PencilIcon, ChevronDownOutlineIcon, ChevronUpOutlineIcon } = icon.ionicons5
+const { PencilIcon, ChevronDownOutlineIcon, ChevronUpOutlineIcon } = Icon
 const { chartEditStore } = useTargetData()
 const { requestOriginUrl, requestInterval, requestIntervalUnit } = toRefs(chartEditStore.getRequestGlobalConfig)
 const editDisabled = ref(true)

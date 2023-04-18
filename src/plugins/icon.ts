@@ -68,7 +68,8 @@ import {
   EyeOutline as EyeOutlineIcon,
   EyeOffOutline as EyeOffOutlineIcon,
   Albums as AlbumsIcon,
-  Analytics as AnalyticsIcon
+  Analytics as AnalyticsIcon,
+  PieChartSharp as PieChartSharpICon
 } from '@vicons/ionicons5'
 
 import {
@@ -103,10 +104,70 @@ import {
   Filter as FilterIcon,
   FilterEdit as FilterEditIcon,
   Laptop as LaptopIcon,
-  Template as TemplateIcon
+  Template as TemplateIcon,
+  BlockStorage as BlockStorageIcon
 } from '@vicons/carbon'
 
-const ionicons5 = {
+export const Icon = {
+  // 组件
+  BlockStorageIcon,
+  // 图表
+  RoadmapIcon,
+  // 信息
+  SpellCheckIcon,
+  // 表格
+  TableSplitIcon,
+  // 装饰
+  GraphicalDataFlowIcon,
+  // 项目
+  DevicesIcon,
+  // 开放模板
+  StoreIcon,
+  // 我的模板
+  ObjectStorageIcon,
+  // 键盘
+  DicomOverlayIcon,
+  // 置顶
+  UpToTopIcon,
+  // 置底
+  DownToBottomIcon,
+  // 移动
+  StackedMoveIcon,
+  // 清空剪切板（刷子）
+  PaintBrushIcon,
+  // 坐标轴
+  ZAxisIcon,
+  AlignHorizontalLeftIcon,
+  AlignVerticalCenterIcon,
+  AlignVerticalTopIcon,
+  AlignHorizontalCenterIcon,
+  AlignHorizontalRightIcon,
+  AlignVerticalBottomIcon,
+  // 添加文件
+  DocumentAddIcon,
+  // 下载文件
+  DocumentDownloadIcon,
+  // 预览展示方式
+  ScaleIcon,
+  FitToScreenIcon,
+  FitToHeightIcon,
+  FitToWidthIcon,
+  // 保存
+  SaveIcon,
+  // 成组
+  Carbon3DCursorIcon,
+  // 解组
+  Carbon3DSoftwareIcon,
+  // 过滤器
+  FilterIcon,
+  FilterEditIcon,
+  // 图层
+  LaptopIcon,
+  // 模板
+  TemplateIcon,
+
+  //统计图
+  PieChartSharpICon,
   // 新增
   AddIcon,
   // 帮助（问号）
@@ -205,7 +266,6 @@ const ionicons5 = {
   SquareIcon,
   // 色彩选择
   ColorPaletteIcon,
-  ZAxisIcon,
   // 气球
   LeafIcon,
   // 颜色
@@ -222,8 +282,6 @@ const ionicons5 = {
   SearchIcon,
   // 加载
   ReloadIcon,
-  // 过滤器
-  FilterIcon,
   // 向上
   ChevronUpOutlineIcon,
   // 向下
@@ -249,66 +307,8 @@ const ionicons5 = {
   AnalyticsIcon,
 }
 
-const carbon = {
-  // 图表
-  RoadmapIcon,
-  // 信息
-  SpellCheckIcon,
-  // 表格
-  TableSplitIcon,
-  // 装饰
-  GraphicalDataFlowIcon,
-  // 项目
-  DevicesIcon,
-  // 开放模板
-  StoreIcon,
-  // 我的模板
-  ObjectStorageIcon,
-  // 键盘
-  DicomOverlayIcon,
-  // 置顶
-  UpToTopIcon,
-  // 置底
-  DownToBottomIcon,
-  // 移动
-  StackedMoveIcon,
-  // 清空剪切板（刷子）
-  PaintBrushIcon,
-  // 坐标轴
-  ZAxisIcon,
-  AlignHorizontalLeftIcon,
-  AlignVerticalCenterIcon,
-  AlignVerticalTopIcon,
-  AlignHorizontalCenterIcon,
-  AlignHorizontalRightIcon,
-  AlignVerticalBottomIcon,
-  // 添加文件
-  DocumentAddIcon,
-  // 下载文件
-  DocumentDownloadIcon,
-  // 预览展示方式
-  ScaleIcon,
-  FitToScreenIcon,
-  FitToHeightIcon,
-  FitToWidthIcon,
-  // 保存
-  SaveIcon,
-  // 成组
-  Carbon3DCursorIcon,
-  // 解组
-  Carbon3DSoftwareIcon,
-  // 过滤器
-  FilterIcon,
-  FilterEditIcon,
-  // 图层
-  LaptopIcon,
-    // 模板
-  TemplateIcon
-}
+
 
 // https://www.xicons.org/#/ 还有很多
 
-export const icon = {
-  ionicons5,
-  carbon
-}
+

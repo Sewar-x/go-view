@@ -57,7 +57,7 @@
 <script setup lang="ts">
 import { SelectInst } from 'naive-ui'
 import { reactive, ref, toRefs, watchEffect } from 'vue'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { EditHistory } from '../EditHistory/index'
 import { EditShortcutKey } from '../EditShortcutKey/index'
 import { EditDataSync } from '../EditDataSync/index'
@@ -67,7 +67,7 @@ import { EditCanvasTypeEnum } from '@/store/modules/chartEditStore/chartEditStor
 import { useChartLayoutStore } from '@/store/modules/chartLayoutStore/chartLayoutStore'
 import { ChartLayoutStoreEnum } from '@/store/modules/chartLayoutStore/chartLayoutStore.d'
 
-const { LockClosedOutlineIcon, LockOpenOutlineIcon } = icon.ionicons5
+const { LockClosedOutlineIcon, LockOpenOutlineIcon } = Icon
 
 // 全局颜色
 const designStore = useDesignStore()

@@ -127,12 +127,12 @@ import { SettingItemBox, SettingItem, CollapseItem } from '@/components/Pages/Ch
 import { CreateComponentType, CreateComponentGroupType, ChartFrameEnum } from '@/packages/index.d'
 import { RequestParamsTypeEnum } from '@/enums/httpEnum'
 import { InteractEventOn, COMPONENT_INTERACT_EVENT_KET } from '@/enums/eventEnum'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import noData from '@/assets/images/canvas/noData.png'
 import { Dialog } from '@/utils'
 import { useTargetData } from '../../../hooks/useTargetData.hook'
 
-const { CloseIcon, AddIcon, HelpOutlineIcon } = icon.ionicons5
+const { CloseIcon, AddIcon, HelpOutlineIcon } = Icon
 const { targetData, chartEditStore } = useTargetData()
 const requestParamsTypeList = [RequestParamsTypeEnum.PARAMS, RequestParamsTypeEnum.HEADER]
 

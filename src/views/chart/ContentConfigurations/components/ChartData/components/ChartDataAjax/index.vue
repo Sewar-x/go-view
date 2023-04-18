@@ -87,7 +87,7 @@
 
 <script setup lang="ts">
 import { ref, toRefs, computed, onBeforeUnmount, watchEffect, toRaw } from 'vue'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { useDesignStore } from '@/store/modules/designStore/designStore'
 import { SettingItemBox, SettingItem } from '@/components/Pages/ChartItemSetting'
 import { ChartDataRequest } from '../ChartDataRequest/index'
@@ -99,7 +99,7 @@ import { ChartDataMatchingAndShow } from '../ChartDataMatchingAndShow'
 import { useTargetData } from '../../../hooks/useTargetData.hook'
 import { newFunctionHandle } from '@/utils'
 
-const { HelpOutlineIcon, FlashIcon, PulseIcon } = icon.ionicons5
+const { HelpOutlineIcon, FlashIcon, PulseIcon } = Icon
 const { targetData, chartEditStore } = useTargetData()
 
 const {

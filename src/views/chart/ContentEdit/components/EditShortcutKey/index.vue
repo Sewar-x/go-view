@@ -21,10 +21,10 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import ShortcutKeyModal from './ShortcutKeyModal.vue'
 
-const { DicomOverlayIcon } = icon.carbon
+const { DicomOverlayIcon } = Icon
 const modelShow = ref<boolean>(false)
 </script>
 

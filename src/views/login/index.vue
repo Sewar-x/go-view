@@ -116,7 +116,7 @@ import { LayoutHeader } from "@/layout/components/LayoutHeader";
 import { LayoutFooter } from "@/layout/components/LayoutFooter";
 import { PageEnum } from "@/enums/pageEnum";
 import { StorageEnum } from "@/enums/storageEnum";
-import { icon } from "@/plugins";
+import { Icon} from '@/plugins';
 import { routerTurnByName } from "@/utils";
 import { loginApi } from "@/api/path";
 import { Logo } from "@/components/Logo";
@@ -127,7 +127,7 @@ interface FormState {
 }
 
 const { GO_SYSTEM_STORE } = StorageEnum;
-const { PersonOutlineIcon, LockClosedOutlineIcon } = icon.ionicons5;
+const { PersonOutlineIcon, LockClosedOutlineIcon } = Icon;
 
 const formRef = ref();
 const loading = ref(false);

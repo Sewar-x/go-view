@@ -163,12 +163,12 @@ import { MonacoEditor } from '@/components/Pages/MonacoEditor'
 import { useTargetData } from '../../../hooks/useTargetData.hook'
 import { templateList } from './importTemplate'
 import { npmPkgs } from '@/hooks'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { CreateComponentType } from '@/packages/index.d'
 import { EventLife } from '@/enums/eventEnum'
 
 const { targetData, chartEditStore } = useTargetData()
-const { DocumentTextIcon, ChevronDownIcon, PencilIcon } = icon.ionicons5
+const { DocumentTextIcon, ChevronDownIcon, PencilIcon } = Icon
 
 const EventLifeName = {
   [EventLife.VNODE_BEFORE_MOUNT]: '渲染之前',

@@ -64,10 +64,10 @@ import {
   httpErrorHandle,
   fetchRouteParamsLocation
 } from '@/utils'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { cloneDeep } from 'lodash'
 
-const { BrowsersOutlineIcon, SendIcon, AnalyticsIcon, CloseIcon } = icon.ionicons5
+const { BrowsersOutlineIcon, SendIcon, AnalyticsIcon, CloseIcon } = Icon
 const chartEditStore = useChartEditStore()
 
 const previewPathRef = ref(previewPath())

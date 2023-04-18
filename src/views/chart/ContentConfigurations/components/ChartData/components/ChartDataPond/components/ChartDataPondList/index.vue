@@ -66,11 +66,11 @@ import { toRefs, computed } from 'vue'
 import { useTargetData } from '@/views/chart/ContentConfigurations/components/hooks/useTargetData.hook'
 import { useDesignStore } from '@/store/modules/designStore/designStore'
 import { RequestDataPondItemType } from '@/store/modules/chartEditStore/chartEditStore.d'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 
 const emit = defineEmits(['createPond', 'deletePond'])
 
-const { DuplicateOutlineIcon, TrashIcon } = icon.ionicons5
+const { DuplicateOutlineIcon, TrashIcon } = Icon
 const designStore = useDesignStore()
 const { chartEditStore, targetData } = useTargetData()
 const { requestDataPond } = toRefs(chartEditStore.getRequestGlobalConfig)

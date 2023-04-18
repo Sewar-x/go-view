@@ -152,7 +152,7 @@
 import { PropType } from 'vue'
 import { PickCreateComponentType, BlendModeEnumList } from '@/packages/index.d'
 import { SettingItemBox, SettingItem, CollapseItem } from '@/components/Pages/ChartItemSetting'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 
 const props = defineProps({
   isGroup: {
@@ -169,7 +169,7 @@ const props = defineProps({
   }
 })
 
-const { HelpOutlineIcon } = icon.ionicons5
+const { HelpOutlineIcon } = Icon
 
 // 百分比格式化 person
 const sliderFormatTooltip = (v: string) => {

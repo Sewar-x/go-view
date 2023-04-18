@@ -98,7 +98,7 @@
 import { PropType, ref, watch, computed, reactive, nextTick } from 'vue'
 import cloneDeep from 'lodash/cloneDeep'
 import { darken, lighten, fade, hslToHex, hslToHexa, loadAsyncComponent } from '@/utils'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 
 type ColorType = {
   id: string
@@ -112,7 +112,7 @@ const props = defineProps({
 
 const emit = defineEmits(['updateColor'])
 
-const { AddIcon, TrashIcon } = icon.ionicons5
+const { AddIcon, TrashIcon } = Icon
 const CreateColorRenderChart = loadAsyncComponent(() => import('../CreateColorRenderChart/index.vue'))
 
 // 拷贝的一份数据

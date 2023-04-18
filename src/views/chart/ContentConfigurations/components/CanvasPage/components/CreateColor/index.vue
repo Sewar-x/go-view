@@ -105,7 +105,7 @@ import { ref, watch, computed, reactive, nextTick, onMounted } from 'vue'
 import cloneDeep from 'lodash/cloneDeep'
 import noData from '@/assets/images/canvas/noData.png'
 import { getUUID, Dialog } from '@/utils'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { UvIndex } from '@vicons/carbon'
 import { useChartEditStore } from '@/store/modules/chartEditStore/chartEditStore'
 import { EditCanvasConfigEnum } from '@/store/modules/chartEditStore/chartEditStore.d'
@@ -115,7 +115,7 @@ const props = defineProps({
   modelShow: Boolean
 })
 const emit = defineEmits(['update:modelShow', 'editSaveHandle'])
-const { DuplicateOutlineIcon, TrashIcon, ArrowDownIcon } = icon.ionicons5
+const { DuplicateOutlineIcon, TrashIcon, ArrowDownIcon } = Icon
 
 type ColorType = {
   id: string

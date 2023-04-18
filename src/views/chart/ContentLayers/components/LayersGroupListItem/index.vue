@@ -55,7 +55,7 @@ import { LayerModeEnum } from '@/store/modules/chartLayoutStore/chartLayoutStore
 import { CreateComponentType, CreateComponentGroupType } from '@/packages/index.d'
 import { LayersListItem } from '../LayersListItem'
 import { LayersStatus } from '../LayersStatus/index'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 
 const props = defineProps({
   componentGroupData: {
@@ -73,7 +73,7 @@ const pickOptionsList = [MenuEnum.UN_GROUP]
 
 // 全局颜色
 const designStore = useDesignStore()
-const { FolderIcon, FolderOpenIcon } = icon.ionicons5
+const { FolderIcon, FolderOpenIcon } = Icon
 
 const chartEditStore = useChartEditStore()
 const { handleContextMenu, onClickOutSide } = useContextMenu()

@@ -15,6 +15,7 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 import { requireLogoImg } from "@/utils/utils";
+import { systemSetting } from "@/settings/systemSetting";
 const props = defineProps({
   showTitle: {
     required: false,
@@ -24,12 +25,12 @@ const props = defineProps({
   title: {
     required: false,
     type: String,
-    default: "MOKA MK",
+    default: systemSetting.APP_NAME,
   },
   subTitle: {
     required: false,
     type: String,
-    default: "Make your Application",
+    default: systemSetting.APP_SLOGAN,
   },
   logoWith: {
     required: false,

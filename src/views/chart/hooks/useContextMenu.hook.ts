@@ -2,7 +2,7 @@ import { ref, nextTick, toRaw } from 'vue'
 import { useChartEditStore } from '@/store/modules/chartEditStore/chartEditStore'
 import { CreateComponentType, CreateComponentGroupType } from '@/packages/index.d'
 import { renderIcon, loadingError } from '@/utils'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { MenuOptionsItemType } from './useContextMenu.hook.d'
 import { MenuEnum } from '@/enums/editPageEnum'
 import cloneDeep from 'lodash/cloneDeep'
@@ -18,8 +18,8 @@ const {
   LockClosedOutlineIcon,
   EyeOutlineIcon,
   EyeOffOutlineIcon
-} = icon.ionicons5
-const { UpToTopIcon, DownToBottomIcon, PaintBrushIcon, Carbon3DSoftwareIcon, Carbon3DCursorIcon } = icon.carbon
+} = Icon
+const { UpToTopIcon, DownToBottomIcon, PaintBrushIcon, Carbon3DSoftwareIcon, Carbon3DCursorIcon } = Icon
 
 const chartEditStore = useChartEditStore()
 

@@ -54,11 +54,11 @@
 <script setup lang="ts">
 import { ProjectItemsCard } from "../ProjectItemsCard/index";
 import { ProjectItemsModalCard } from "../ProjectItemsModalCard/index";
-import { icon } from "@/plugins";
+import { Icon} from '@/plugins';
 import { useModalDataInit } from "./hooks/useModal.hook";
 import { useDataListInit } from "./hooks/useData.hook";
 import { EmptyImage } from "@/components/Pages/Empty";
-const { CopyIcon, EllipsisHorizontalCircleSharpIcon } = icon.ionicons5;
+const { CopyIcon, EllipsisHorizontalCircleSharpIcon } = Icon;
 const {
   modalData,
   modalShow,

@@ -82,9 +82,9 @@ import { exportHandle } from './utils'
 import { useFile } from './hooks/useFile.hooks'
 import { useSyncUpdate } from './hooks/useSyncUpdate.hook'
 import { BtnListType, TypeEnum } from './index.d'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 
-const { DownloadIcon, ShareIcon, PawIcon, SettingsSharpIcon, CreateIcon } = icon.ionicons5
+const { DownloadIcon, ShareIcon, PawIcon, SettingsSharpIcon, CreateIcon } = Icon
 const settingStore = useSettingStore()
 const chartEditStore = useChartEditStore()
 const routerParamsInfo = useRoute()

@@ -63,7 +63,7 @@
 
 <script setup lang="ts">
 import { ref, toRefs, watch, computed } from 'vue'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { loadAsyncComponent } from '@/utils'
 import { ContentBox } from '../ContentBox/index'
 import { TabsEnum } from './index.d'
@@ -75,7 +75,7 @@ const { getDetails } = toRefs(useChartLayoutStore())
 const { setItem } = useChartLayoutStore()
 const chartEditStore = useChartEditStore()
 
-const { ConstructIcon, FlashIcon, DesktopOutlineIcon, LeafIcon, RocketIcon } = icon.ionicons5
+const { ConstructIcon, FlashIcon, DesktopOutlineIcon, LeafIcon, RocketIcon } = Icon
 
 const ContentEdit = loadAsyncComponent(() => import('../ContentEdit/index.vue'))
 const CanvasPage = loadAsyncComponent(() => import('./components/CanvasPage/index.vue'))

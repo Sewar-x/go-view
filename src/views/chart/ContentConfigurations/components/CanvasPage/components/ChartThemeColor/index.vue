@@ -43,7 +43,7 @@ import { EditCanvasConfigEnum } from '@/store/modules/chartEditStore/chartEditSt
 import { chartColors, ChartColorsNameType } from '@/settings/chartThemes/index'
 import { useDesignStore } from '@/store/modules/designStore/designStore'
 import { loadAsyncComponent, colorCustomMerge } from '@/utils'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 
 type FormateCustomColorType = {
   [T: string]: {
@@ -54,7 +54,7 @@ type FormateCustomColorType = {
 
 const CreateColor = loadAsyncComponent(() => import('../CreateColor/index.vue'))
 
-const { SquareIcon, AddIcon } = icon.ionicons5
+const { SquareIcon, AddIcon } = Icon
 const chartEditStore = useChartEditStore()
 
 // 全局颜色

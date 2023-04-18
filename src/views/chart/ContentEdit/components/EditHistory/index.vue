@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { useChartHistoryStore } from '@/store/modules/chartHistoryStore/chartHistoryStore'
 import { historyActionTypeName } from '@/store/modules/chartHistoryStore/chartHistoryDefine'
 import { CreateComponentType } from '@/packages/index.d'
@@ -60,8 +60,8 @@ const {
   LockOpenOutlineIcon,
   EyeOffOutlineIcon,
   EyeOutlineIcon
-} = icon.ionicons5
-const { StackedMoveIcon, Carbon3DCursorIcon, Carbon3DSoftwareIcon } = icon.carbon
+} = Icon
+const { StackedMoveIcon, Carbon3DCursorIcon, Carbon3DSoftwareIcon } = Icon
 
 const chartHistoryStoreStore = useChartHistoryStore()
 

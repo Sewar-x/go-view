@@ -3,10 +3,10 @@ import { renderIcon } from '@/utils'
 import { RouterLink } from 'vue-router'
 import { PageEnum } from '@/enums/pageEnum'
 import { MenuOption, MenuGroupOption } from 'naive-ui'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 
-const { GridIcon, TvOutlineIcon } = icon.ionicons5
-const { StoreIcon, ObjectStorageIcon, DevicesIcon } = icon.carbon
+const { GridIcon, TvOutlineIcon } = Icon
+const { StoreIcon, ObjectStorageIcon, DevicesIcon } = Icon
 export const renderMenuLabel = (option: MenuOption | MenuGroupOption) => {
   return option.label
 }

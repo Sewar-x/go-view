@@ -67,7 +67,7 @@
 
 <script setup lang="ts">
 import { ref, onUnmounted } from 'vue'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { createComponent } from '@/packages'
 import { ConfigType, CreateComponentType } from '@/packages/index.d'
 import { themeColor, MenuOptionsType } from '../../hooks/useAside.hook'
@@ -88,7 +88,7 @@ const props = defineProps({
 
 const chartEditStore = useChartEditStore()
 const chartLayoutStore = useChartLayoutStore()
-const { SearchIcon, AlbumsIcon, GridIcon } = icon.ionicons5
+const { SearchIcon, AlbumsIcon, GridIcon } = Icon
 const isFocus = ref<boolean>(false)
 const showPopover = ref<boolean>(false)
 const loading = ref<boolean | undefined>(undefined)

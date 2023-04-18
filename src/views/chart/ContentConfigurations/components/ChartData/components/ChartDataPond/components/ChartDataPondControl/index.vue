@@ -54,7 +54,7 @@ import { requestConfig } from '@/packages/public/publicConfig'
 import { useTargetData } from '@/views/chart/ContentConfigurations/components/hooks/useTargetData.hook'
 import { RequestDataPondItemType } from '@/store/modules/chartEditStore/chartEditStore.d'
 import { RequestDataTypeEnum } from '@/enums/httpEnum'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { getUUID, Dialog } from '@/utils'
 import { cloneDeep } from 'lodash'
 
@@ -63,7 +63,7 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update:modelShow', 'sendHandle'])
-const { PencilIcon } = icon.ionicons5
+const { PencilIcon } = Icon
 const { chartEditStore, targetData } = useTargetData()
 const { requestDataPond } = toRefs(chartEditStore.getRequestGlobalConfig)
 const requestShow = ref(false)

@@ -82,7 +82,7 @@
 import { ref, computed, watch } from 'vue'
 import { ChartFrameEnum } from '@/packages/index.d'
 import { RequestDataTypeEnum } from '@/enums/httpEnum'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { DataResultEnum, TimelineTitleEnum } from '../../index.d'
 import { ChartDataMonacoEditor } from '../ChartDataMonacoEditor'
 import { useFile } from '../../hooks/useFile.hooks'
@@ -105,8 +105,8 @@ const props = defineProps({
 // 表格标题
 const tableTitle = ['字段', '映射', '状态']
 
-const { HelpOutlineIcon } = icon.ionicons5
-const { DocumentAddIcon, DocumentDownloadIcon } = icon.carbon
+const { HelpOutlineIcon } = Icon
+const { DocumentAddIcon, DocumentDownloadIcon } = Icon
 
 const source = ref()
 const dimensions = ref()

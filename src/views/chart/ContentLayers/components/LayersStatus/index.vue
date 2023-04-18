@@ -22,7 +22,7 @@ import { computed, PropType } from 'vue'
 import { useDesignStore } from '@/store/modules/designStore/designStore'
 import { StatusType } from '@/packages/index.d'
 import { useChartEditStore } from '@/store/modules/chartEditStore/chartEditStore'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 
 const props = defineProps({
   isGroup: {
@@ -42,7 +42,7 @@ const props = defineProps({
   }
 })
 
-const { LockClosedOutlineIcon, LockOpenOutlineIcon, EyeOutlineIcon, EyeOffOutlineIcon } = icon.ionicons5
+const { LockClosedOutlineIcon, LockOpenOutlineIcon, EyeOutlineIcon, EyeOffOutlineIcon } = Icon
 const chartEditStore = useChartEditStore()
 const designStore = useDesignStore()
 

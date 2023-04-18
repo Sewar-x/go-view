@@ -50,8 +50,8 @@
 </template>
 
 <script setup lang="ts">
-import { icon } from '@/plugins'
-const { ChevronBackOutlineIcon } = icon.ionicons5
+import { Icon} from '@/plugins'
+const { ChevronBackOutlineIcon } = Icon
 
 const emit = defineEmits(['back'])
 

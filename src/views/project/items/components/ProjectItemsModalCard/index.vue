@@ -76,11 +76,11 @@
 <script setup lang="ts">
 import { ref, reactive, PropType, watch } from 'vue'
 import { renderIcon, renderLang } from '@/utils'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { MacOsControlBtn } from '@/components/Tips/MacOsControlBtn'
 import { Chartype } from '../../index.d'
 
-const { HammerIcon } = icon.ionicons5
+const { HammerIcon } = Icon
 const showRef = ref(false)
 const emit = defineEmits(['close', 'edit'])
 

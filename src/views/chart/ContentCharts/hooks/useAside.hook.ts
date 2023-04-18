@@ -1,5 +1,5 @@
 import { shallowReactive, ref } from 'vue'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { renderLang, renderIcon } from '@/utils'
 import { themeColor, setItem, getCharts } from './useLayout.hook'
 import { PackagesCategoryEnum, PackagesCategoryName, PackagesType } from '@/packages/index.d'
@@ -7,13 +7,13 @@ import { PackagesCategoryEnum, PackagesCategoryName, PackagesType } from '@/pack
 import { usePackagesStore } from '@/store/modules/packagesStore/packagesStore'
 import { ChartLayoutStoreEnum } from '@/store/modules/chartLayoutStore/chartLayoutStore.d'
 // 图标
-const { BarChartIcon } = icon.ionicons5
+const { BarChartIcon } = Icon
 const {
   TableSplitIcon,
   RoadmapIcon,
   SpellCheckIcon,
   GraphicalDataFlowIcon,
-} = icon.carbon
+} = Icon
 
 
 // 图表

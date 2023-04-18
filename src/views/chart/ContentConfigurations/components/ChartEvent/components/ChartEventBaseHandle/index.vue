@@ -128,10 +128,10 @@ import { ref, computed, watch, toRefs, toRaw } from 'vue'
 import { MonacoEditor } from '@/components/Pages/MonacoEditor'
 import { useTargetData } from '../../../hooks/useTargetData.hook'
 import { BaseEvent } from '@/enums/eventEnum'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 
 const { targetData, chartEditStore } = useTargetData()
-const { DocumentTextIcon, ChevronDownIcon, PencilIcon } = icon.ionicons5
+const { DocumentTextIcon, ChevronDownIcon, PencilIcon } = Icon
 
 const EventTypeName = {
   [BaseEvent.ON_CLICK]: '单击',

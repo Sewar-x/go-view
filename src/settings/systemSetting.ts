@@ -16,4 +16,8 @@ export const systemSetting = {
   [SettingStoreEnums.CHART_TOOLS_STATUS]: ToolsStatusEnum.ASIDE,
   // 图表工具栏状态隐藏（刚开始不隐藏）
   [SettingStoreEnums.CHART_TOOLS_STATUS_HIDE]: false,
+  // app 名称
+  APP_NAME: 'APP Maker',
+  // app 标语
+  APP_SLOGAN: "Make your Application",
 }

@@ -10,8 +10,8 @@
 <script lang="ts" setup>
 import { useDesignStore } from '@/store/modules/designStore/designStore'
 import { setHtmlTheme } from '@/utils'
-import { icon } from '@/plugins'
-const { MoonIcon, SunnyIcon } = icon.ionicons5
+import { Icon} from '@/plugins'
+const { MoonIcon, SunnyIcon } = Icon
 const designStore = useDesignStore()
 
 // 改变样式

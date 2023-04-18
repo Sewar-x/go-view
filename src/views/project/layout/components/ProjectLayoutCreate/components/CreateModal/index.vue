@@ -3,7 +3,7 @@
     <n-space size="large">
       <n-card class="card-box" hoverable>
         <template #header>
-          <n-text class="card-box-tite">{{ $t('project.create_tip') }}</n-text>
+          <n-text class="card-box-tite">{{ $t("project.create_tip") }}</n-text>
         </template>
         <template #header-extra>
           <n-text @click="closeHandle">
@@ -35,51 +35,55 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, shallowRef } from 'vue'
-import { icon } from '@/plugins'
-import { PageEnum, ChartEnum } from '@/enums/pageEnum'
-import { ResultEnum } from '@/enums/httpEnum'
-import { fetchPathByName, routerTurnByPath, renderLang, getUUID } from '@/utils'
-import { createProjectApi } from '@/api/path'
+import { ref, watch, shallowRef } from "vue";
+import { Icon} from '@/plugins';
+import { PageEnum, ChartEnum } from "@/enums/pageEnum";
+import { ResultEnum } from "@/enums/httpEnum";
+import { fetchPathByName, routerTurnByPath, renderLang, getUUID } from "@/utils";
+import { createProjectApi } from "@/api/path";
 
-const { FishIcon, CloseIcon } = icon.ionicons5
-const { StoreIcon, ObjectStorageIcon } = icon.carbon
-const showRef = ref(false)
+const { PieChartSharpICon, CloseIcon } = Icon;
+const { StoreIcon, ObjectStorageIcon,BlockStorageIcon } = Icon;
+const showRef = ref(false);
 
-const emit = defineEmits(['close'])
+const emit = defineEmits(["close"]);
 const props = defineProps({
-  show: Boolean
-})
+  show: Boolean,
+});
 
 const typeList = shallowRef([
   {
-    title: renderLang('project.new_project'),
+    title: renderLang("project.chart_project"),
     key: ChartEnum.CHART_HOME_NAME,
-    icon: FishIcon,
-    disabled: false
+    icon: PieChartSharpICon,
+    disabled: false,
   },
   {
-    title: renderLang('project.my_templete'),
+    title: renderLang("project.table_project"),
+    key: ChartEnum.CHART_HOME_NAME,
+    icon: BlockStorageIcon,
+    disabled: true,
+  },
+  {
+    title: renderLang("project.template_project"),
     key: PageEnum.BASE_HOME_TEMPLATE_NAME,
     icon: ObjectStorageIcon,
-    disabled: true
+    disabled: true,
   },
-  {
-    title: renderLang('project.template_market'),
-    key: PageEnum.BASE_HOME_TEMPLATE_MARKET_NAME,
-    icon: StoreIcon,
-    disabled: true
-  }
-])
 
-watch(() => props.show, newValue => {
-  showRef.value = newValue
-})
+]);
+
+watch(
+  () => props.show,
+  (newValue) => {
+    showRef.value = newValue;
+  }
+);
 
 // 关闭对话框
 const closeHandle = () => {
-  emit('close', false)
-}
+  emit("close", false);
+};
 
 // 处理按钮点击
 const btnHandle = async (key: string) => {
@@ -94,26 +98,26 @@ const btnHandle = async (key: string) => {
           remarks: null,
           // 图片地址
           indexImage: null,
-        })
-        if(res && res.code === ResultEnum.SUCCESS) {
-          window['$message'].success(window['$t']('project.create_success'))
+        });
+        if (res && res.code === ResultEnum.SUCCESS) {
+          window["$message"].success(window["$t"]("project.create_success"));
 
-          const { id } = res.data
-          const path = fetchPathByName(ChartEnum.CHART_HOME_NAME, 'href')
-          routerTurnByPath(path, [id], undefined, true)
-          closeHandle()
+          const { id } = res.data;
+          const path = fetchPathByName(ChartEnum.CHART_HOME_NAME, "href");
+          routerTurnByPath(path, [id], undefined, true);
+          closeHandle();
         }
       } catch (error) {
-        window['$message'].error(window['$t']('project.create_failure'))
+        window["$message"].error(window["$t"]("project.create_failure"));
       }
       break;
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 $cardWidth: 570px;
 
-@include go('create-modal') {
+@include go("create-modal") {
   position: fixed;
   top: 200px;
   left: 50%;
@@ -124,7 +128,7 @@ $cardWidth: 570px;
     border: 1px solid rgba(0, 0, 0, 0);
     @extend .go-transition;
     &:hover {
-      @include hover-border-color('hover-border-color');
+      @include hover-border-color("hover-border-color");
     }
     &-tite {
       font-size: 14px;

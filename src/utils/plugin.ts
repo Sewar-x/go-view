@@ -1,9 +1,9 @@
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { DialogEnum } from '@/enums/pluginEnum'
 import { dialogIconSize } from '@/settings/designSetting'
 import { maskClosable } from '@/settings/designSetting'
 import { DialogReactive } from 'naive-ui'
-const { InformationCircleIcon } = icon.ionicons5
+const { InformationCircleIcon } = Icon
 import { renderIcon } from '@/utils'
 
 // * 开启加载

@@ -73,14 +73,14 @@ import { reactive, ref, watch } from 'vue'
 import { ListType } from './index.d'
 import { useSettingStore } from '@/store/modules/settingStore/settingStore'
 import { SettingStoreEnums, ToolsStatusEnum } from '@/store/modules/settingStore/settingStore.d'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 
 const props = defineProps({
   modelShow: Boolean
 })
 
 const emit = defineEmits(['update:modelShow'])
-const { HelpOutlineIcon, CloseIcon } = icon.ionicons5
+const { HelpOutlineIcon, CloseIcon } = Icon
 const settingStore = useSettingStore()
 const modelShowRef = ref(false)
 

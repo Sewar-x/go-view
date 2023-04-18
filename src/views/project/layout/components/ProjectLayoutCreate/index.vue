@@ -33,9 +33,9 @@
 import { ref } from 'vue'
 import { useDesignStore } from '@/store/modules/designStore/designStore'
 import { CreateModal } from './components/CreateModal/index'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 
-const { DuplicateIcon, DuplicateOutlineIcon } = icon.ionicons5
+const { DuplicateIcon, DuplicateOutlineIcon } = Icon
 const designStore = useDesignStore()
 
 const props = defineProps({

@@ -19,7 +19,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { icon } from "@/plugins";
+import { Icon} from '@/plugins';
 import { computed } from "vue";
 import { screenfullFn } from "@/utils";
 
@@ -54,7 +54,7 @@ const props = defineProps({
   },
 });
 
-const { CloseIcon, RemoveIcon, ResizeIcon } = icon.ionicons5;
+const { CloseIcon, RemoveIcon, ResizeIcon } = Icon;
 
 const filterBtnList = computed(() => {
   const res = btnList.filter((e) => {

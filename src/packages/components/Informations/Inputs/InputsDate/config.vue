@@ -32,12 +32,12 @@
 
 <script lang="ts" setup>
 import { PropType } from 'vue'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { CollapseItem, SettingItemBox, SettingItem } from '@/components/Pages/ChartItemSetting'
 import { option } from './config'
 import { ComponentInteractEventEnum } from './interact'
 
-const { HelpOutlineIcon } = icon.ionicons5
+const { HelpOutlineIcon } = Icon
 
 const props = defineProps({
   optionData: {

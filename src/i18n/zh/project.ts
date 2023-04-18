@@ -10,10 +10,13 @@ export default {
   all_project: '全部项目',
   my_templete: '我的模板',
   template_market: '开放模板',
+  template_project: '模板',
 
 
   // items 
   release: '已发布',
   unreleased: '未发布',
-  last_edit: '最后编辑'
+  last_edit: '最后编辑',
+  chart_project: '报表项目',
+  table_project: '表单项目'
 }

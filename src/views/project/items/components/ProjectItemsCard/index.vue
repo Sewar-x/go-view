@@ -86,7 +86,7 @@
 <script setup lang="ts">
 import { reactive, ref, PropType } from "vue";
 import { renderIcon, renderLang, requireErrorImg } from "@/utils";
-import { icon } from "@/plugins";
+import { Icon} from '@/plugins';
 import { MacOsControlBtn } from "@/components/Tips/MacOsControlBtn";
 import { Chartype } from "../../index.d";
 const {
@@ -98,8 +98,8 @@ const {
   BrowsersOutlineIcon,
   HammerIcon,
   SendIcon,
-} = icon.ionicons5;
-const { TemplateIcon } = icon.carbon;
+} = Icon;
+const { TemplateIcon } = Icon;
 const emit = defineEmits(["preview", "delete", "resize", "edit", "release","setTemplate"]);
 
 const props = defineProps({

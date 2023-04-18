@@ -27,10 +27,10 @@ import { ref, toRefs, watch } from 'vue'
 import { useChartEditStore } from '@/store/modules/chartEditStore/chartEditStore'
 import { useDesignStore } from '@/store/modules/designStore/designStore'
 import { SyncEnum } from '@/enums/editPageEnum'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { saveInterval } from '@/settings/designSetting'
 
-const { ReloadIcon } = icon.ionicons5
+const { ReloadIcon } = Icon
 
 const chartEditStore = useChartEditStore()
 const designStore = useDesignStore()

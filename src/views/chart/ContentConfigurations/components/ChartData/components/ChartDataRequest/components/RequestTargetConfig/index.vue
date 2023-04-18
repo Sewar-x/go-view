@@ -63,7 +63,7 @@ import { selectTypeOptions, selectTimeOptions } from '@/views/chart/ContentConfi
 import { RequestConfigType } from '@/store/modules/chartEditStore/chartEditStore.d'
 import { RequestHeader } from '../RequestHeader'
 import { isDev } from '@/utils'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import {
   chartDataUrl,
   chartSingleDataUrl,
@@ -87,7 +87,7 @@ const props = defineProps({
   targetDataRequest: Object as PropType<RequestConfigType>
 })
 
-const { HelpOutlineIcon } = icon.ionicons5
+const { HelpOutlineIcon } = Icon
 const { chartEditStore } = useTargetData()
 const { requestOriginUrl } = toRefs(chartEditStore.getRequestGlobalConfig)
 const { requestInterval, requestIntervalUnit, requestHttpType, requestUrl } = toRefs(

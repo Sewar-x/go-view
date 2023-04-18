@@ -313,11 +313,11 @@ import { PropType, computed } from 'vue'
 import { GlobalThemeJsonType } from '@/settings/chartThemes/index'
 import { axisConfig } from '@/packages/chartConfiguration/echarts/index'
 import { CollapseItem, SettingItemBox, SettingItem, GlobalSettingPosition } from '@/components/Pages/ChartItemSetting'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { useChartEditStore } from '@/store/modules/chartEditStore/chartEditStore'
 import EchartsRendererSetting from './EchartsRendererSetting.vue'
 
-const { HelpOutlineIcon } = icon.ionicons5
+const { HelpOutlineIcon } = Icon
 
 const props = defineProps({
   optionData: {

@@ -51,7 +51,7 @@ const {
   AlignHorizontalCenterIcon,
   AlignHorizontalRightIcon,
   AlignVerticalBottomIcon
-} = icon.carbon
+} = Icon
 
 const positionList = [
   {

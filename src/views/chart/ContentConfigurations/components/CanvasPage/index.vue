@@ -138,11 +138,11 @@ import { UploadCustomRequestOptions } from 'naive-ui'
 import { loadAsyncComponent, fetchRouteParamsLocation } from '@/utils'
 import { PreviewScaleEnum } from '@/enums/styleEnum'
 import { ResultEnum } from '@/enums/httpEnum'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { uploadFile} from '@/api/path'
 
-const { ColorPaletteIcon } = icon.ionicons5
-const { ScaleIcon, FitToScreenIcon, FitToHeightIcon, FitToWidthIcon } = icon.carbon
+const { ColorPaletteIcon } = Icon
+const { ScaleIcon, FitToScreenIcon, FitToHeightIcon, FitToWidthIcon } = Icon
 
 const chartEditStore = useChartEditStore()
 const systemStore = useSystemStore()

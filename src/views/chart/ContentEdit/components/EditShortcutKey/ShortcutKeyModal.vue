@@ -32,10 +32,10 @@
 
 <script setup lang="ts">
 import { watch, ref } from 'vue'
-import { icon } from '@/plugins'
+import { Icon} from '@/plugins'
 import { WinKeyboard, MacKeyboard } from '@/enums/editPageEnum'
 
-const { CloseIcon } = icon.ionicons5
+const { CloseIcon } = Icon
 const modelShowRef = ref(false)
 
 const emit = defineEmits(['update:modelShow'])
