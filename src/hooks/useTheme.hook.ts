@@ -26,6 +26,10 @@ export const useThemeOverridesHook = () => {
       const lightObject = {
         common: {
           ...commonObj.common
+        },
+        GradientText: {
+          gradientStart: getAppTheme.value,
+          gradientEnd: lighten(alpha(getAppTheme.value), 0.1)
         }
       }
       // 暗色主题
@@ -35,7 +39,11 @@ export const useThemeOverridesHook = () => {
         },
         LoadingBar: {
           colorLoading: getAppTheme.value
-        }
+        },
+        GradientText: {
+          gradientStart: getAppTheme.value,
+          gradientEnd: lighten(alpha(getAppTheme.value), -0.1)
+        },
       }
       return designStore.getDarkTheme ? dartObject : lightObject
     }

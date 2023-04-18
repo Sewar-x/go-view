@@ -34,19 +34,8 @@
         <div class="login-account-container">
           <n-collapse-transition :appear="true" :show="show">
             <n-card class="login-account-card" :title="$t('login.desc')">
-              <div class="login-account-top">
-                <img
-                  class="login-account-top-logo"
-                  :src="requireLogoImg()"
-                  alt="展示图片"
-                />
-                <div class="title-container">
-                  <n-gradient-text class="title" type="info"> MOKA MK </n-gradient-text>
-                  <n-gradient-text class="sub-title" type="info">
-                    Make your Application
-                  </n-gradient-text>
-                </div>
-              </div>
+              <n-divider style="margin: 0 0 20px 0" />
+              <Logo class="login-account-logo" logoHeight="150" logoWith="150" />
               <n-form
                 ref="formRef"
                 label-placement="left"
@@ -130,7 +119,7 @@ import { StorageEnum } from "@/enums/storageEnum";
 import { icon } from "@/plugins";
 import { routerTurnByName } from "@/utils";
 import { loginApi } from "@/api/path";
-import { requireLogoImg } from "@/utils/utils";
+import { Logo } from "@/components/Logo";
 import bgLottie from "@/assets/lottie/bg.json";
 interface FormState {
   username: string;
@@ -322,23 +311,8 @@ $carousel-image-height: 60vh;
         height: $account-img-height;
         margin-bottom: 20px;
       }
-      .login-account-top {
-        display: flex;
-        padding: 0 20px;
-        .login-account-top-logo {
-          width: 150px;
-          height: 150px;
-        }
-        .title-container {
-          padding: 25px 0 0 10px;
-          .title {
-            font-size: 36px;
-            font-weight: 500;
-          }
-          .sub-title {
-            font-size: 18px;
-          }
-        }
+      &-logo {
+        margin: 15px 0 50px 0;
       }
     }
   }

@@ -15,7 +15,7 @@
 
 <script lang="ts" setup>
 import { NConfigProvider } from 'naive-ui'
-import { GoAppProvider } from '@/components/GoAppProvider'
+import { AppProvider } from '@/components/AppProvider'
 import { I18n } from '@/components/I18n'
 import { useSystemInit, useDarkThemeHook, useThemeOverridesHook, useCode, useLang } from '@/hooks'
 

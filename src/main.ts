@@ -4,13 +4,13 @@ import router, { setupRouter } from '@/router'
 import i18n from '@/i18n/index'
 import { setupStore } from '@/store'
 import { setupComponents, setupDirectives, setupCustomComponents, initFunction } from '@/plugins'
-import { GoAppProvider } from '@/components/GoAppProvider/index'
+import { AppProvider } from '@/components/AppProvider/index'
 import { setHtmlTheme } from '@/utils'
 
 
 
 async function appInit() {
-  const goAppProvider = createApp(GoAppProvider)
+  const goAppProvider = createApp(AppProvider)
 
   const app = createApp(App)
   //注册全局组件

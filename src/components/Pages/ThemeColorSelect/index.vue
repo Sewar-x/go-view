@@ -20,7 +20,6 @@
         <div class="content-right">
           <div class="color-name-detail">
             <n-text v-if="appThemeDetail" class="color-name">{{ appThemeDetail.name }}</n-text>
-            <n-text v-else class="color-name">中国色</n-text>
             <n-text
               v-if="appThemeDetail"
               class="color-name-Pinyin"

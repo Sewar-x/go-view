@@ -16,7 +16,7 @@ export const theme = {
   // 默认是否开启深色主题
   darkTheme: true,
   //默认主题色
-  appTheme: '#51d6a9',
+  appTheme: 'rgb(60, 126, 255)',
   appThemeDetail: null,
 }
 
