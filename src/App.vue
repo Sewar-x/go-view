@@ -6,10 +6,10 @@
     :date-locale="dateLocale"
     :theme-overrides="overridesTheme"
   >
-    <go-app-provider>
+    <app-provider>
       <I18n></I18n>
       <router-view></router-view>
-    </go-app-provider>
+    </app-provider>
   </n-config-provider>
 </template>
 

@@ -54,7 +54,7 @@
 <script setup lang="ts">
 import { ProjectItemsCard } from "../ProjectItemsCard/index";
 import { ProjectItemsModalCard } from "../ProjectItemsModalCard/index";
-import { Icon} from '@/plugins';
+import { Icon } from "@/plugins";
 import { useModalDataInit } from "./hooks/useModal.hook";
 import { useDataListInit } from "./hooks/useData.hook";
 import { EmptyImage } from "@/components/Pages/Empty";
@@ -75,7 +75,11 @@ const {
   changePage,
   releaseHandle,
   deleteHandle,
+  getListHandle,
+  projectListFormat,
 } = useDataListInit();
+//请求获取列表数据
+getListHandle({}, projectListFormat);
 </script>
 
 <style lang="scss" scoped>

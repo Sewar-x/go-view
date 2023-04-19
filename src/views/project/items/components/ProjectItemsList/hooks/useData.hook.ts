@@ -1,5 +1,5 @@
 import { httpErrorHandle } from '@/utils'
-import { projectListApi, deleteProjectApi, changeProjectReleaseApi } from '@/api/path'
+import { projectListApi, deleteProjectApi, createProjectApi, changeProjectReleaseApi } from '@/api/path'
 import { Chartype } from '../../../index.d'
 import { ResultEnum } from '@/enums/httpEnum'
 import useListInit from '@/hooks/useListInit.hook'
@@ -9,17 +9,23 @@ export const useDataListInit = () => {
     loading,
     paginat,
     list,
-    fetchList,
     changeSize,
     changePage,
+    getListHandle,
+    createdHandle,
     deleteHandle
   } = useListInit({
     getApi: projectListApi,
+    createApi: createProjectApi,
     deleteApi: deleteProjectApi
   })
 
-  // 获取列表数据
-  fetchList({}, (data) => {
+  /**
+   * 格式化列表数据
+   * @param data 
+   */
+  const projectListFormat = (data: Array<any>) => {
+    console.log("🚀 ~projectListFormat====", data)
     //回调处理返回数据格式
     list.value = data.map((e: any) => {
       const { id, projectName, state, createTime, indexImage, createUserId } = e
@@ -33,9 +39,15 @@ export const useDataListInit = () => {
         ...e
       }
     })
-  })
+  };
 
-  // 发布处理
+
+  /**
+   * 发布项目
+   * @param cardData 
+   * @param index 
+   * @returns 
+   */
   const releaseHandle = async (cardData: Chartype, index: number) => {
     const { id, release } = cardData
     const res = await changeProjectReleaseApi({
@@ -45,7 +57,8 @@ export const useDataListInit = () => {
     })
     if (res && res.code === ResultEnum.SUCCESS) {
       list.value = []
-      fetchList()
+      // 获取列表数据
+      getListHandle({}, projectListFormat)
       // 发布 -> 未发布
       if (release) {
         window['$message'].success(window['$t']('global.r_unpublish_success'))
@@ -64,10 +77,12 @@ export const useDataListInit = () => {
     loading,
     paginat,
     list,
-    fetchList,
     releaseHandle,
     changeSize,
     changePage,
-    deleteHandle
+    getListHandle,
+    projectListFormat,
+    createdHandle,
+    deleteHandle,
   }
 }

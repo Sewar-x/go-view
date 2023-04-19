@@ -13,21 +13,18 @@ type ListItemType = {
 // hook 参数类型
 type ListInitType = {
     getApi: (params: ListItemType) => any, // 获取列表接口
+    createApi: (params: ListItemType) => any,
     deleteApi: (params: ListItemType) => any, // 删除列表接口
 }
 
-// 接口参数类型
-type ListParamsInitType = {
-    getApiParams?: ListItemType, // 获取列表接口参数
-    deleteApiParams?: ListItemType // 删除列表接口参数
-}
 
 /**
  * 列表相关 hook 
  */
 export default (apis: ListInitType) => {
+    // loading 加载
     const loading = ref(true)
-
+    // 分页对象
     const paginat = reactive({
         // 当前页数
         page: ListConfigEnum.PAGE,
@@ -46,8 +43,8 @@ export default (apis: ListInitType) => {
      * @param callback  请求回调方法
      * @returns 
      */
-    const fetchList = async (
-        apiParams: ListParamsInitType = {},
+    const getListHandle = async (
+        apiParams: ListItemType = {},
         callback: (params: any) => any = (() => { })
     ) => {
 
@@ -58,7 +55,7 @@ export default (apis: ListInitType) => {
                 Object.assign({ //合并列表请求默认参数和额外参数
                     page: paginat.page,
                     limit: paginat.limit
-                }, apiParams.getApiParams))
+                }, apiParams))
 
             setTimeout(() => {
                 loading.value = false
@@ -79,6 +76,31 @@ export default (apis: ListInitType) => {
         }
     }
 
+
+    /**
+     * 新增列表数据处理
+     * @param params 
+     */
+    const createdHandle = async (
+        apiParams: ListItemType = {},
+        callback: (params: any) => any = (() => { })) => {
+        loading.value = true
+        try {
+            const res = await apis.createApi(apiParams)
+            if (res && res.data) {
+                window['$message'].success(window['$t']('global.created_success'))
+                callback && callback(res.data) //调用回调参数，处理返回数据格式
+                return true
+            } else {
+                window["$message"].error(window["$t"]("project.create_failure"));
+                return httpErrorHandle()
+            }
+        } catch (err) {
+            httpErrorHandle()
+        }
+        loading.value = false
+    }
+
     /**
      * 删除列表数据方法
      * @param cardData 列表数据,通过列表数据获取默认参数 id
@@ -86,7 +108,7 @@ export default (apis: ListInitType) => {
      */
     const deleteHandle = (
         data: ListItemType,
-        params: ListParamsInitType = {}
+        params: ListItemType = {}
     ) => {
         //弹窗提示
         Dialog({
@@ -107,7 +129,7 @@ export default (apis: ListInitType) => {
             promiseResCallback: (res: any) => {
                 if (res.code === ResultEnum.SUCCESS) {
                     window['$message'].success(window['$t']('global.r_delete_success'))
-                    fetchList()
+                    getListHandle()
                     return
                 }
                 httpErrorHandle()
@@ -118,13 +140,13 @@ export default (apis: ListInitType) => {
     // 修改页数
     const changePage = (_page: number) => {
         paginat.page = _page
-        fetchList()
+        getListHandle()
     }
 
     // 修改大小
     const changeSize = (_size: number) => {
         paginat.limit = _size
-        fetchList()
+        getListHandle()
     }
 
 
@@ -132,9 +154,10 @@ export default (apis: ListInitType) => {
         loading,
         paginat,
         list,
-        fetchList,
         changeSize,
         changePage,
-        deleteHandle
+        getListHandle, // 获取列表
+        createdHandle, // 新增
+        deleteHandle // 删除
     }
 }

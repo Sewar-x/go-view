@@ -32,6 +32,7 @@ const global = {
   r_delete_success: '删除成功！',
   r_more: '更多',
   set_template: '设为模板',
+  created_success: '创建成功!'
 }
 
 const http = {

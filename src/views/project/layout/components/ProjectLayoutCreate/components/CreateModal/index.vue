@@ -36,17 +36,18 @@
 
 <script lang="ts" setup>
 import { ref, watch, shallowRef } from "vue";
-import { Icon} from '@/plugins';
+import { Icon } from "@/plugins";
 import { PageEnum, ChartEnum } from "@/enums/pageEnum";
 import { ResultEnum } from "@/enums/httpEnum";
 import { fetchPathByName, routerTurnByPath, renderLang, getUUID } from "@/utils";
 import { createProjectApi } from "@/api/path";
-
+import { useDataListInit } from "@/views/project/items/components/ProjectItemsList/hooks/useData.hook";
 const { PieChartSharpICon, CloseIcon } = Icon;
-const { StoreIcon, ObjectStorageIcon,BlockStorageIcon } = Icon;
+const { StoreIcon, ObjectStorageIcon, BlockStorageIcon } = Icon;
+const { getListHandle, projectListFormat, createdHandle } = useDataListInit();
 const showRef = ref(false);
 
-const emit = defineEmits(["close"]);
+const emit = defineEmits(["close", "created"]);
 const props = defineProps({
   show: Boolean,
 });
@@ -60,7 +61,7 @@ const typeList = shallowRef([
   },
   {
     title: renderLang("project.table_project"),
-    key: ChartEnum.CHART_HOME_NAME,
+    key: ChartEnum.TABLE_HOME_NAME,
     icon: BlockStorageIcon,
     disabled: true,
   },
@@ -70,7 +71,6 @@ const typeList = shallowRef([
     icon: ObjectStorageIcon,
     disabled: true,
   },
-
 ]);
 
 watch(
@@ -89,28 +89,38 @@ const closeHandle = () => {
 const btnHandle = async (key: string) => {
   switch (key) {
     case ChartEnum.CHART_HOME_NAME:
-      try {
-        // 新增项目
-        const res = await createProjectApi({
-          // 项目名称
-          projectName: getUUID(),
-          // remarks
-          remarks: null,
-          // 图片地址
-          indexImage: null,
-        });
-        if (res && res.code === ResultEnum.SUCCESS) {
-          window["$message"].success(window["$t"]("project.create_success"));
-
-          const { id } = res.data;
-          const path = fetchPathByName(ChartEnum.CHART_HOME_NAME, "href");
-          routerTurnByPath(path, [id], undefined, true);
-          closeHandle();
-        }
-      } catch (error) {
-        window["$message"].error(window["$t"]("project.create_failure"));
-      }
+      created(key);
       break;
+  }
+};
+
+const created = async (key: string) => {
+  try {
+    // 新增项目
+    const res = await createdHandle(
+      {
+        // 项目名称
+        projectName: `${key}-${getUUID()}`,
+        // remarks
+        remarks: null,
+        // 图片地址
+        indexImage: null,
+      },
+      (data) => {
+        const { id } = data;
+        const path = fetchPathByName(ChartEnum.CHART_HOME_NAME, "href");
+        routerTurnByPath(path, [id], undefined, true);
+        closeHandle();
+        emit("created", data);
+        setTimeout(() => {
+          console.log("====创建按钮====");
+          // 获取列表数据
+          getListHandle({}, projectListFormat);
+        }, 1000);
+      }
+    );
+  } catch (error) {
+    emit("created", false);
   }
 };
 </script>

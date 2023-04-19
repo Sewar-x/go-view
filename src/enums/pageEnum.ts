@@ -4,6 +4,8 @@ export enum ChartEnum {
   // 图表创建
   CHART_HOME = '/chart/home/:id(.*)*',
   CHART_HOME_NAME = 'ChartHome',
+  // 表单主页名称
+  TABLE_HOME_NAME = 'TableHome'
 }
 
 export enum PreviewEnum {
