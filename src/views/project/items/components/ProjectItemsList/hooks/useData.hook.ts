@@ -25,7 +25,6 @@ export const useDataListInit = () => {
    * @param data 
    */
   const projectListFormat = (data: Array<any>) => {
-    console.log("🚀 ~projectListFormat====", data)
     //回调处理返回数据格式
     list.value = data.map((e: any) => {
       const { id, projectName, state, createTime, indexImage, createUserId } = e

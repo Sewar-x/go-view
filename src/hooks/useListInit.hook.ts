@@ -146,6 +146,7 @@ export default (apis: ListInitType) => {
     // 修改大小
     const changeSize = (_size: number) => {
         paginat.limit = _size
+        paginat.page = 1
         getListHandle()
     }
 
