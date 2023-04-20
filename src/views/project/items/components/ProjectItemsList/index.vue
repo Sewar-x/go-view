@@ -52,13 +52,14 @@
 </template>
 
 <script setup lang="ts">
+import { toRefs, watch } from "vue";
 import { ProjectItemsCard } from "../ProjectItemsCard/index";
 import { ProjectItemsModalCard } from "../ProjectItemsModalCard/index";
-import { Icon } from "@/plugins";
 import { useModalDataInit } from "./hooks/useModal.hook";
 import { useDataListInit } from "./hooks/useData.hook";
 import { EmptyImage } from "@/components/Pages/Empty";
-const { CopyIcon, EllipsisHorizontalCircleSharpIcon } = Icon;
+import { useProjectStoreStore } from "@/store/modules/projectStoreStore/projectStoreStore";
+const projectStoreStore = useProjectStoreStore();
 const {
   modalData,
   modalShow,
@@ -80,6 +81,12 @@ const {
 } = useDataListInit();
 //请求获取列表数据
 getListHandle({}, projectListFormat);
+watch(
+  () => projectStoreStore.getProjectCreatedName,
+  (newValue) => {
+    getListHandle({}, projectListFormat);
+  }
+);
 </script>
 
 <style lang="scss" scoped>

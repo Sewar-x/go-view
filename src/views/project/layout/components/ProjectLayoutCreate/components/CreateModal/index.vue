@@ -38,14 +38,14 @@
 import { ref, watch, shallowRef } from "vue";
 import { Icon } from "@/plugins";
 import { PageEnum, ChartEnum } from "@/enums/pageEnum";
-import { ResultEnum } from "@/enums/httpEnum";
 import { fetchPathByName, routerTurnByPath, renderLang, getUUID } from "@/utils";
-import { createProjectApi } from "@/api/path";
+import { useProjectStoreStore } from "@/store/modules/projectStoreStore/projectStoreStore";
 import { useDataListInit } from "@/views/project/items/components/ProjectItemsList/hooks/useData.hook";
 const { PieChartSharpICon, CloseIcon } = Icon;
-const { StoreIcon, ObjectStorageIcon, BlockStorageIcon } = Icon;
-const { getListHandle, projectListFormat, createdHandle } = useDataListInit();
+const { ObjectStorageIcon, BlockStorageIcon } = Icon;
+const { createdHandle } = useDataListInit();
 const showRef = ref(false);
+const { setProjectCreatedName } = useProjectStoreStore();
 
 const emit = defineEmits(["close", "created"]);
 const props = defineProps({
@@ -96,11 +96,12 @@ const btnHandle = async (key: string) => {
 
 const created = async (key: string) => {
   try {
+    const projectName: string = `${key}-${getUUID()}`;
     // 新增项目
     const res = await createdHandle(
       {
         // 项目名称
-        projectName: `${key}-${getUUID()}`,
+        projectName,
         // remarks
         remarks: null,
         // 图片地址
@@ -111,12 +112,8 @@ const created = async (key: string) => {
         const path = fetchPathByName(ChartEnum.CHART_HOME_NAME, "href");
         routerTurnByPath(path, [id], undefined, true);
         closeHandle();
+        setProjectCreatedName(projectName);
         emit("created", data);
-        setTimeout(() => {
-          console.log("====创建按钮====");
-          // 获取列表数据
-          getListHandle({}, projectListFormat);
-        }, 1000);
       }
     );
   } catch (error) {
