@@ -2,22 +2,29 @@
   <!-- 工作台相关 -->
   <div class="go-chart">
     <n-layout>
+      <!-- 工作台-头部栏 -->
       <layout-header-pro>
         <template #left>
+          <!-- 工作台-头部栏-左侧操作按钮组 -->
           <header-left-btn></header-left-btn>
         </template>
         <template #center>
+          <!-- 工作台-头部栏-中间工作台名称 -->
           <header-title></header-title>
         </template>
         <template #ri-left>
+          <!-- 工作台-头部栏-右侧操作按钮 -->
           <header-right-btn></header-right-btn>
         </template>
       </layout-header-pro>
+      <!-- 工作台-内容区域 -->
       <n-layout-content content-style="overflow:hidden; display: flex">
-        <div style="overflow:hidden; display: flex">
+        <!-- 工作台-内容区域 - 左侧边栏 -->
+        <div style="overflow: hidden; display: flex">
           <content-charts></content-charts>
           <content-layers></content-layers>
         </div>
+        <!-- 工作台-内容区域 - 编辑区 -->
         <content-configurations></content-configurations>
       </n-layout-content>
     </n-layout>
@@ -39,33 +46,36 @@
 </template>
 
 <script setup lang="ts">
-import { loadAsyncComponent } from '@/utils'
-import { LayoutHeaderPro } from '@/layout/components/LayoutHeaderPro'
-import { useContextMenu } from './hooks/useContextMenu.hook'
-import { useChartEditStore } from '@/store/modules/chartEditStore/chartEditStore'
-import { useChartHistoryStore } from '@/store/modules/chartHistoryStore/chartHistoryStore'
+import { loadAsyncComponent } from "@/utils";
+import { LayoutHeaderPro } from "@/layout/components/LayoutHeaderPro";
+import { useContextMenu } from "./hooks/useContextMenu.hook";
+import { useChartEditStore } from "@/store/modules/chartEditStore/chartEditStore";
+import { useChartHistoryStore } from "@/store/modules/chartHistoryStore/chartHistoryStore";
 
-const chartHistoryStoreStore = useChartHistoryStore()
-const chartEditStore = useChartEditStore()
+const chartHistoryStoreStore = useChartHistoryStore();
+const chartEditStore = useChartEditStore();
 
 // 记录初始化
-chartHistoryStoreStore.canvasInit(chartEditStore.getEditCanvas)
+chartHistoryStoreStore.canvasInit(chartEditStore.getEditCanvas);
 
-const HeaderLeftBtn = loadAsyncComponent(() => import('./ContentHeader/headerLeftBtn/index.vue'))
-const HeaderRightBtn = loadAsyncComponent(() => import('./ContentHeader/headerRightBtn/index.vue'))
-const HeaderTitle = loadAsyncComponent(() => import('./ContentHeader/headerTitle/index.vue'))
-const ContentLayers = loadAsyncComponent(() => import('./ContentLayers/index.vue'))
-const ContentCharts = loadAsyncComponent(() => import('./ContentCharts/index.vue'))
-const ContentConfigurations = loadAsyncComponent(() => import('./ContentConfigurations/index.vue'))
-const ContentLoad = loadAsyncComponent(() => import('./ContentLoad/index.vue'))
+const HeaderLeftBtn = loadAsyncComponent(
+  () => import("./ContentHeader/headerLeftBtn/index.vue")
+);
+const HeaderRightBtn = loadAsyncComponent(
+  () => import("./ContentHeader/headerRightBtn/index.vue")
+);
+const HeaderTitle = loadAsyncComponent(
+  () => import("./ContentHeader/headerTitle/index.vue")
+);
+const ContentLayers = loadAsyncComponent(() => import("./ContentLayers/index.vue"));
+const ContentCharts = loadAsyncComponent(() => import("./ContentCharts/index.vue"));
+const ContentConfigurations = loadAsyncComponent(
+  () => import("./ContentConfigurations/index.vue")
+);
+const ContentLoad = loadAsyncComponent(() => import("./ContentLoad/index.vue"));
 
 // 右键
-const {
-  menuOptions,
-  onClickOutSide,
-  mousePosition,
-  handleMenuSelect
-} = useContextMenu()
+const { menuOptions, onClickOutSide, mousePosition, handleMenuSelect } = useContextMenu();
 </script>
 
 <style lang="scss" scoped>

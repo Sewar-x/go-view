@@ -5,7 +5,7 @@ import '@/styles/pages/index.scss'
 import 'animate.css/animate.min.css'
 // 引入标尺
 import 'vue3-sketch-ruler/lib/style.css'
-
+import { App } from 'vue';
 import Vue3Lottie from 'vue3-lottie'
 import 'vue3-lottie/dist/style.css'
 import { setupNaive } from '@/plugins'

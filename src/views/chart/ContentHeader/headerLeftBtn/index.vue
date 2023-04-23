@@ -1,5 +1,6 @@
 <template>
   <n-space class="header-left-btn" :size="25">
+   <!--按钮-主页-->
     <n-button size="small" quaternary @click="goHomeHandle()">
       <template #icon>
         <n-icon :depth="3">
@@ -8,7 +9,7 @@
       </template>
     </n-button>
     <n-space>
-      <!-- 模块展示按钮 -->
+      <!--按钮-  模块展示钮 -->
       <n-tooltip v-for="item in btnList" :key="item.key" placement="bottom" trigger="hover">
         <template #trigger>
           <n-button size="small" ghost :type="styleHandle(item)" @click="clickHandle(item)">
@@ -20,7 +21,7 @@
 
       <n-divider vertical />
 
-      <!-- 历史记录按钮 -->
+      <!--按钮- 历史记录按钮 -->
       <n-tooltip v-for="item in historyList" :key="item.key" placement="bottom" trigger="hover">
         <template #trigger>
           <n-button size="small" ghost type="primary" :disabled="!item.select" @click="clickHistoryHandle(item)">
@@ -32,7 +33,7 @@
 
       <n-divider vertical />
 
-      <!-- 保存 -->
+      <!--按钮- 保存 -->
       <n-tooltip placement="bottom" trigger="hover">
         <template #trigger>
           <div class="save-btn" >
