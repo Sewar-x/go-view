@@ -230,7 +230,7 @@ $contentHeight: 180px;
   &:hover {
     @include hover-border-color("hover-border-color");
   }
-  @include hoverScale("items-list-card-container", 1.08);
+  @include hoverScale("items-list-card-container", 1.04);
   .list-content {
     margin-top: 20px;
     margin-bottom: 5px;
