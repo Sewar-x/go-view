@@ -152,10 +152,10 @@ export type PickCreateComponentType<T extends keyof CreateComponentType> = Pick<
 
 // 包分类枚举
 export enum PackagesCategoryEnum {
-  CHARTS = 'Charts',
-  TABLES = 'Tables',
-  INFORMATIONS = 'Informations',
-  DECORATES = 'Decorates'
+  CHARTS = 'Charts',//'图表',
+  TABLES = 'Tables',// '列表',
+  INFORMATIONS = 'Informations',//'信息',
+  DECORATES = 'Decorates'//'小组件'
 }
 
 // 包分类名称

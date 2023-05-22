@@ -12,13 +12,14 @@
         <bar-chart-icon></bar-chart-icon>
       </n-icon>
     </template>
-
+    <!-- 侧边栏盒子：顶部组件搜索组件 -->
     <template #top-right>
       <charts-search v-show="getCharts" :menuOptions="menuOptions"></charts-search>
     </template>
     <!-- 图表 -->
     <aside>
       <div class="menu-width-box">
+        <!-- 侧边栏盒子：侧边一级菜单栏 -->
         <n-menu
           class="menu-width"
           v-model:value="selectValue"
@@ -27,7 +28,9 @@
           :indent="18"
           @update:value="clickItemHandle"
         ></n-menu>
+        <!-- 侧边栏盒子：侧边二级菜单栏 -->
         <div class="menu-component-box">
+          <!-- 骨架屏 -->
           <go-skeleton
             :load="!selectOptions"
             round
@@ -47,9 +50,9 @@
 </template>
 
 <script setup lang="ts">
-import { ContentBox } from '../ContentBox/index'
-import { ChartsOptionContent } from './components/ChartsOptionContent'
-import { ChartsSearch } from './components/ChartsSearch'
+import { ContentBox } from "../ContentBox/index";
+import { ChartsOptionContent } from "./components/ChartsOptionContent";
+import { ChartsSearch } from "./components/ChartsSearch";
 import {
   getCharts,
   BarChartIcon,
@@ -58,7 +61,7 @@ import {
   selectValue,
   clickItemHandle,
   menuOptions,
-} from './hooks/useAside.hook'
+} from "./hooks/useAside.hook";
 </script>
 
 <style lang="scss" scoped>
@@ -81,7 +84,7 @@ $topHeight: 40px;
     height: calc(100vh - #{$--header-height} - #{$topHeight});
     .menu-width {
       flex-shrink: 0;
-      @include fetch-bg-color('background-color2');
+      @include fetch-bg-color("background-color2");
     }
     .menu-component-box {
       flex-shrink: 0;
@@ -95,13 +98,13 @@ $topHeight: 40px;
         height: auto !important;
         &.n-menu-item--selected {
           &::after {
-            content: '';
+            content: "";
             position: absolute;
             left: 2px;
             top: 0;
             height: 100%;
             width: 3px;
-            background-color: v-bind('themeColor');
+            background-color: v-bind("themeColor");
             border-top-right-radius: 3px;
             border-bottom-right-radius: 3px;
           }

@@ -1,5 +1,5 @@
 import { shallowReactive, ref } from 'vue'
-import { Icon} from '@/plugins'
+import { Icon } from '@/plugins'
 import { renderLang, renderIcon } from '@/utils'
 import { themeColor, setItem, getCharts } from './useLayout.hook'
 import { PackagesCategoryEnum, PackagesCategoryName, PackagesType } from '@/packages/index.d'

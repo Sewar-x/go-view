@@ -166,7 +166,7 @@ export const useSync = () => {
 
     // 数据赋值
     for (const key in projectData) {
-      // 组件
+      // 加载组件
       if (key === ChartEditStoreEnum.COMPONENT_LIST) {
         let loadIndex = 0
         const listLength = projectData[key].length;
