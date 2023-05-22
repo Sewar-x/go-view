@@ -2,7 +2,7 @@ import { ref, nextTick, toRaw } from 'vue'
 import { useChartEditStore } from '@/store/modules/chartEditStore/chartEditStore'
 import { CreateComponentType, CreateComponentGroupType } from '@/packages/index.d'
 import { renderIcon, loadingError } from '@/utils'
-import { Icon} from '@/plugins'
+import { Icon } from '@/plugins'
 import { MenuOptionsItemType } from './useContextMenu.hook.d'
 import { MenuEnum } from '@/enums/editPageEnum'
 import cloneDeep from 'lodash/cloneDeep'
@@ -35,7 +35,7 @@ export const divider = (n: number = 3) => {
   }
 }
 
-// * 默认单组件选项
+// * 默认单组件选项：用于操作单个对象的操作方法
 export const defaultOptions: MenuOptionsItemType[] = [
   {
     label: '锁定',
@@ -129,7 +129,7 @@ export const defaultOptions: MenuOptionsItemType[] = [
   }
 ]
 
-// * 默认多选组件选项
+// * 默认多选组件选项：用于操作多个对象的操作方法
 export const defaultMultiSelectOptions: MenuOptionsItemType[] = [
   {
     label: '创建分组',
@@ -145,7 +145,7 @@ export const defaultMultiSelectOptions: MenuOptionsItemType[] = [
   }
 ]
 
-// * 无数据传递拥有的选项
+// * 无数据传递拥有的选项: 粘贴、清空剪切板
 const defaultNoItemKeys = [MenuEnum.PARSE, MenuEnum.CLEAR]
 
 /**
@@ -179,7 +179,10 @@ const hideOption = (options: MenuOptionsItemType[], hideList?: MenuEnum[]) => {
 // * 右键内容
 const menuOptions = ref<MenuOptionsItemType[]>([])
 
-// * 右键处理
+/** 
+ *右键处理 方法 
+ * 
+ **/
 const handleContextMenu = (
   e: MouseEvent,
   // 右键对象
@@ -194,33 +197,39 @@ const handleContextMenu = (
   e.stopPropagation()
   e.preventDefault()
 
+  //获取事件触发的元素，并将其转换为非 SVG 元素
   let target = e.target
   while (target instanceof SVGElement) {
     target = target.parentNode
   }
-
+  //设置右键选中的目标对象
   chartEditStore.setTargetSelectChart(targetInstance && targetInstance.id)
 
   // 隐藏旧列表
   chartEditStore.setRightMenuShow(false)
 
-  // * 多选默认选项
+  // * 多选默认选项：选择多个对象,显示选项包括 创建分组、删除
   if (chartEditStore.getTargetChart.selectId.length > 1) {
     menuOptions.value = defaultMultiSelectOptions
   } else {
-    // * 单选默认选项
+    // * 单选默认选项：选择单个对象
     menuOptions.value = defaultOptions
   }
 
+  //未选中 chart 对象, 显示：粘贴、清空剪切板
   if (!targetInstance) {
     menuOptions.value = pickOption(toRaw(menuOptions.value), defaultNoItemKeys)
   }
+
+  //传入隐藏选项列表,将隐藏列表加入选项列表
   if (hideOptionsList) {
     menuOptions.value = hideOption([...defaultMultiSelectOptions, divider(), ...defaultOptions], hideOptionsList)
   }
+  //传入选项列表,将列表加入选项列表
   if (pickOptionsList) {
     menuOptions.value = pickOption([...defaultMultiSelectOptions, divider(), ...defaultOptions], pickOptionsList)
   }
+  //传入自定义处理函数
   if (optionsHandle) {
     // 自定义函数能够拿到当前选项和所有选项
     menuOptions.value = optionsHandle(
@@ -244,7 +253,7 @@ export const useContextMenu = () => {
   // 设置默认项
   menuOptions.value = defaultOptions
 
-  // * 失焦
+  // * 失焦，隐藏右键列表
   const onClickOutSide = () => {
     chartEditStore.setRightMenuShow(false)
   }

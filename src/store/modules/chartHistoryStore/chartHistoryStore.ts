@@ -57,6 +57,7 @@ export const useChartHistoryStore = defineStore({
     pushBackStackItem(item: HistoryItemType | Array<HistoryItemType>, notClear = false): void {
       if (item instanceof Array) this.backStack = [...this.backStack, ...item]
       else this.backStack.push(item)
+      //截取堆栈中 100长度 以内数据
       this.backStack.splice(0, this.backStack.length - editHistoryMax)
       // 新动作需清空前进栈
       if (notClear) return
