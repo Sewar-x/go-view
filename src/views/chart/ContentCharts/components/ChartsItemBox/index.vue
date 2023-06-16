@@ -51,7 +51,7 @@ import { DragKeyEnum } from "@/enums/editPageEnum";
 import { createComponent } from "@/packages";
 import { ConfigType, CreateComponentType } from "@/packages/index.d";
 import { fetchConfigComponent, fetchChartComponent } from "@/packages/index";
-
+//lodash/omit 是 Lodash 库提供的一个函数，用于创建一个新对象，该对象从原始对象中排除指定的属性。它接受两个参数：第一个参数是原始对象，第二个参数是一个数组或字符串，用于指定需要排除的属性名称。
 import omit from "lodash/omit";
 
 const chartEditStore = useChartEditStore();
@@ -73,7 +73,7 @@ const chartMode: Ref<ChartModeEnum> = computed(() => {
 
 // 拖拽处理
 const dragStartHandle = (e: DragEvent, item: ConfigType) => {
-  // 动态注册图表组件
+  // 动态全局注册图表组件
   componentInstall(item.chartKey, fetchChartComponent(item));
   componentInstall(item.conKey, fetchConfigComponent(item));
   // 将配置项绑定到拖拽属性上
