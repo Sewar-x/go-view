@@ -1,3 +1,4 @@
+<!--目标图表的右侧的配置模块-->
 <template>
   <n-layout has-sider sider-placement="right">
     <n-layout-content>

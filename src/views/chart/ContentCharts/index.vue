@@ -1,3 +1,4 @@
+<!--左侧图表展示区域 ..\components\ChartsItemBox\index.vue 文件里有拖拽起始代码，包括动态注册组件-->
 <template>
   <!-- 左侧所有组件的展示列表 -->
   <content-box

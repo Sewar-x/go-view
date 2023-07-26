@@ -1,3 +1,4 @@
+<!--拖拽起始代码，包括动态注册组件-->
 <template>
   <div class="go-content-charts-item-animation-patch">
     <div

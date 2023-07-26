@@ -1,3 +1,4 @@
+<!--画布，标尺，工具栏，底部控制-->
 <template>
   <!-- <edit-rule></edit-rule> -->
   <content-box

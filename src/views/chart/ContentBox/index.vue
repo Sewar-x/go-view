@@ -1,3 +1,4 @@
+<!--封装每一列的布局（顶部，内容，底部，滚动条），包括颜色深浅-->
 <template>
   <!-- 侧边栏盒子：每个小模块的公共样式 -->
   <div class="go-content-box" :class="[`bg-depth${depth}`, flex && 'flex']">
