@@ -24,7 +24,7 @@ export enum ResultEnum {
   TOKEN_UNAUTHORIZED = 401,//没有提供 token 或者提供的 token 无效。
   TOKEN_AUTHENTICATION_TIMEOUT = 419, //（或 440 Login Timeout）：token 已过期或超时
   TOKEN_INVALID = 498,//提供的 token 无效。
-  Token_Required = 499,//没有提供 token。
+  TOKEN_REQUIRED = 499,//没有提供 token。
 }
 
 // 数据相关

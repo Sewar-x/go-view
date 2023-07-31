@@ -15,7 +15,7 @@ const axiosInstance = axios.create({
   baseURL: `${import.meta.env.PROD ? import.meta.env.VITE_PRO_PATH : ''}${axiosPre}`,
   timeout: ResultEnum.TIMEOUT,
 }) as unknown as RequestInstance
-
+const tokensStatus = [ ResultEnum.TOKEN_AUTHENTICATION_TIMEOUT, ResultEnum.TOKEN_INVALID,ResultEnum.TOKEN_REQUIRED]
 
 axiosInstance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
@@ -54,11 +54,11 @@ axiosInstance.interceptors.response.use(
     if (code === ResultEnum.SUCCESS) {
       return Promise.resolve(res.data)
     }
-
+   
     // 登录过期
-    if (code === ResultEnum.TOKEN_AUTHENTICATION_TIMEOUT) {
+    if (tokensStatus.includes(code)) {
       Dialog({
-        message: window['$t']('http.token_overdue_message'),
+        message: window['$t']('http.token_overdue_message')
       })
       routerTurnByName(PageEnum.BASE_LOGIN_NAME)
       return Promise.resolve(res.data)
@@ -75,6 +75,13 @@ axiosInstance.interceptors.response.use(
     return Promise.resolve(res.data)
   },
   (err: AxiosResponse) => {
+    const status =  err?.response?.status
+    if (tokensStatus.includes(status)) {
+      Dialog({
+        message: window['$t']('http.token_overdue_message')
+      })
+      routerTurnByName(PageEnum.BASE_LOGIN_NAME)
+    }
     return Promise.reject(err)
   }
 )
