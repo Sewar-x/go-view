@@ -2,7 +2,6 @@ import { http } from '@/api/http'
 import { httpErrorHandle } from '@/utils'
 import { RequestHttpEnum, ModuleTypeEnum } from '@/enums/httpEnum'
 import { LoginResult } from './system'
-
 // * 登录
 export const loginApi = async (data: object) => {
   try {

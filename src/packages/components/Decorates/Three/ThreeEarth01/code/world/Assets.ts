@@ -22,7 +22,7 @@ for(let item in modules) {
   if(n) {
     textures.push({
       name: n.split('.')[0],
-      url: modules[item].default
+      url: modules[item].default as string
     })
   }
 }

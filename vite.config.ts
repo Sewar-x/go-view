@@ -1,93 +1,73 @@
-import { defineConfig, loadEnv } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path'
-import { OUTPUT_DIR, brotliSize, chunkSizeWarningLimit, terserOptions, rollupOptions } from './build/constant'
-import viteCompression from 'vite-plugin-compression'
-import { axiosPre } from './src/settings/httpSetting'
-import { viteMockServe } from 'vite-plugin-mock'
-import monacoEditorPlugin from 'vite-plugin-monaco-editor'
+import { fileURLToPath, URL } from "node:url";
+import { loadEnv, type ConfigEnv, type UserConfig } from "vite";
+import { wrapperEnv } from "./build/utils";
+import { createVitePlugin } from "./build/vite/plugin";
+import { createProxy } from "./build/vite/proxy";
+import { OUTPUT_DIR, chunkSizeWarningLimit, terserOptions, rollupOptions } from './build/constant'
 
-function pathResolve(dir: string) {
-  return resolve(process.cwd(), '.', dir)
-}
+// https://vitejs.dev/config/
+export default ({ command, mode }: ConfigEnv): UserConfig => {
+  const url = import.meta.url;
 
-export default ({ mode }) => defineConfig({
-  base: process.env.NODE_ENV === 'production' ? './' : '/',
-  // 路径重定向
-  resolve: {
-    alias: [
-      {
-        find: '#',
-        replacement: pathResolve('types')
+  // process.cwd()方法返回Node.js进程的当前工作目录。
+  const root = process.cwd();
+
+  // 加载 root 中的 .env 文件。
+  const env = loadEnv(mode, root);
+
+  // loadEnv读取的布尔类型是一个字符串。这个函数可以转换为布尔类型
+  const viteEnv = wrapperEnv(env);
+  // command 为 package.json 中 scripts 脚本中 vite 命令后接参数
+  const isBuild = command === "build";
+
+  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_DROP_CONSOLE } = viteEnv;
+
+  return {
+    // 打包路径
+    base: VITE_PUBLIC_PATH,
+    // 打包后根目录
+    root,
+    // 文件解析
+    resolve: {
+      alias: {
+        "@": fileURLToPath(new URL("./src", url)), // 源文件目录别名
+        "#": fileURLToPath(new URL("./types", url)),// 类型定义文件目录别名
+        "vue-i18n": 'vue-i18n/dist/vue-i18n.cjs.js', //解决i8n警告
       },
-      {
-        find: '@',
-        replacement: pathResolve('src')
-      },
-      {
-        find: 'vue-i18n',
-        replacement: 'vue-i18n/dist/vue-i18n.cjs.js', //解决i8n警告
-      }
-    ],
-    dedupe: ['vue']
-  },
-  // 全局 css 注册
-  css: {
-    preprocessorOptions: {
-      scss: {
-        javascriptEnabled: true,
-        additionalData: `@import "src/styles/common/style.scss";`
-      }
-    }
-  },
-  // 开发服务器配置
-  server: {
-    host: true,
-    open: true,
-    port: 3000,
-    proxy: {
-      [axiosPre]: {
-        // @ts-ignore
-        target: loadEnv(mode, process.cwd()).VITE_DEV_PATH,
-        changeOrigin: true,
-        ws: true,
-        secure: true,
-      }
+    },
+    // 本地开发服务
+    server: {
+      host: true,
+      port: VITE_PORT,
+      open: true,
+      cors: true,
+      hmr: true, // 开启热更新
+      proxy: createProxy(VITE_PROXY),
+    },
+    // 插件
+    plugins: createVitePlugin(viteEnv, isBuild),
+    // 构建参数
+    esbuild: {
+      // 删除对控制台API方法(如console.log)的所有调用
+      pure: VITE_DROP_CONSOLE ? ["console.log", "debugger"] : [],
+    },
 
-    }
-  },
-  plugins: [
-    vue(),
-    monacoEditorPlugin({
-      languageWorkers: ['editorWorkerService', 'typescript', 'json', 'html']
-    }),
-    viteMockServe({
-      mockPath: '/src/api/mock',
-      // 开发打包开关
-      localEnabled: true,
-      // 生产打包开关
-      prodEnabled: true,
-      // 打开后，可以读取 ts 文件模块。 请注意，打开后将无法监视.js 文件
-      supportTs: true,
-      // 监视文件更改
-      watchFiles: true
-    }),
-    // 压缩
-    viteCompression({
-      verbose: true,
-      disable: false,
-      threshold: 10240,
-      algorithm: 'gzip',
-      ext: '.gz'
-    })
-  ],
-  build: {
-    target: 'es2015',
-    outDir: OUTPUT_DIR,
-    // minify: 'terser', // 如果需要用terser混淆，可打开这两行
-    // terserOptions: terserOptions,
-    rollupOptions: rollupOptions,
-    brotliSize: brotliSize,
-    chunkSizeWarningLimit: chunkSizeWarningLimit
-  }
-})
+    build: {
+      target: "es2015",
+      minify: 'terser',
+      outDir: OUTPUT_DIR,
+      terserOptions: terserOptions,
+      rollupOptions: rollupOptions,
+      chunkSizeWarningLimit: chunkSizeWarningLimit
+    },
+    // 全局 css 注册
+    css: {
+      preprocessorOptions: {
+        scss: {
+          javascriptEnabled: true,
+          additionalData: `@import "src/styles/common/style.scss";`
+        }
+      }
+    },
+  };
+};

@@ -2,11 +2,11 @@ import { PublicConfigClass } from '@/packages/public'
 import { CreateComponentType } from '@/packages/index.d'
 import { VideoConfig } from './index'
 import cloneDeep from 'lodash/cloneDeep'
-import video from '@/assets/videos/earth.mp4'
+// import video from '@/assets/videos/earth.mp4'
 
 export const option = {
   // 视频路径
-  dataset: video,
+  dataset: null,
   // 循环播放
   loop: true,
   // 静音

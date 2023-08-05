@@ -1,4 +1,4 @@
-import axios, { AxiosResponse, AxiosRequestConfig } from 'axios'
+import axios, { AxiosResponse, AxiosError,AxiosRequestConfig } from 'axios'
 import { ResultEnum } from "@/enums/httpEnum"
 import { PageEnum, ErrorPageNameMap } from "@/enums/pageEnum"
 import { StorageEnum } from '@/enums/storageEnum'
@@ -8,7 +8,7 @@ import { getToken } from '@/utils/auth'
 import { fetchAllowList } from './axios.config'
 import includes from 'lodash/includes'
 import { Dialog } from '@/utils'
-import type { RequestInstance } from '#/axios.d'
+import  { RequestInstance } from '#/axios.d'
 
 
 const axiosInstance = axios.create({
@@ -74,7 +74,7 @@ axiosInstance.interceptors.response.use(
     window['$message'].error(window['$t']((res.data as any).msg))
     return Promise.resolve(res.data)
   },
-  (err: AxiosResponse) => {
+  (err: AxiosError) => {
     const status =  err?.response?.status
     if (tokensStatus.includes(status)) {
       Dialog({

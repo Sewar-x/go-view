@@ -1,25 +1,56 @@
 {
+  "compileOnSave": true, //设置保存文件的时候自动编译
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "types/**/*",
+    "build/**/*.ts",
+    "build/**/*.d.ts",
+    "vite.config.*",
+    "mock/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.js"
+  ],
   "compilerOptions": {
+    //配置编译选项
+    "diagnostics": true, // 打印诊断信息
+    "removeComments": true, //移除代码中注释
+    "strictNullChecks": true, //开启null、undefined检测
+    "baseUrl": ".", // 解析非相对模块的基地址，默认是当前目录
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
     "jsx": "preserve",
-    "baseUrl": ".",
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "lib": ["es6", "ESNext", "dom"],
-    "types": ["vite/client"],
+    "isolatedModules": true,
+    "lib": [
+      "es6",
+      "ESNext",
+      "dom"
+    ],
+    "types": [
+      "node",
+      "vite/client"
+    ], //默认所有可见的”@types“包会在编译过程中被包含进来。 node_modules/@types文件夹下以及它们子文件夹下的所有包都是可见的；如果指定了types，只有被列出来的包才会被包含进来
     "paths": {
-      "@/*": ["src/*"],
-      "/#/*": ["types/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "/#/*": [
+        "types/*"
+      ]
     },
     "noImplicitAny": true, //不允许使用any
     // "strictNullChecks": true, //不允许使用null
     "noImplicitThis": true //不允许往this上面挂属性
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "types/**/*"],
-  "exclude": ["node_modules", "dist", "**/*.js"]
 }

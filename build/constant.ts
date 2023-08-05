@@ -1,5 +1,15 @@
+/**
+ * 在生产环境中输入的配置文件的名称
+ */
 import path from 'path'
-export const OUTPUT_DIR = 'dist'
+
+export const GLOB_CONFIG_FILE_NAME = "_app.config.js"
+
+export const OUTPUT_DIR = "dist"
+
+export const ASSETS_DIR = "assets"
+
+
 
 // monaco-editor 路径
 export const prefix = `monaco-editor/esm/vs`
@@ -16,7 +26,7 @@ export const rollupOptions = {
     chunkFileNames: 'static/js/[name]-[hash].js',
     entryFileNames: 'static/js/[name]-[hash].js',
     assetFileNames: (chunkInfo) => {
-      if(['.png', '.jpg', '.jpeg'].includes(path.extname(chunkInfo.name))) {
+      if (['.png', '.jpg', '.jpeg'].includes(path.extname(chunkInfo.name))) {
         return `static/[ext]/[name].[ext]`
       }
       return `static/[ext]/[name]-[hash].[ext]`
