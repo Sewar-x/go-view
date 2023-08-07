@@ -60,8 +60,8 @@ const getConfig = async function () {
     ]),
     localRoot: path.resolve(__dirname, `../dist`),
     remoteRoot: {// 远程静态资源文件路径
-      test: '/opt/lampp/htdocs/pdp_test',
-      production: '/opt/lampp/htdocs/pdp_test'
+      test: '',
+      production: ''
     }
   };
 }
