@@ -55,6 +55,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     build: {
       target: "es2015",
       outDir: OUTPUT_DIR,
+      terserOptions: terserOptions,
       rollupOptions: rollupOptions,
       chunkSizeWarningLimit: chunkSizeWarningLimit
     },
