@@ -13,7 +13,9 @@
     "new": "plop --plopfile ./plop/plopfile.js",
     "postinstall": "husky install",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.vue src",
-    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx,.vue src --fix"
+    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx,.vue src --fix",
+    "deploy:test": "cross-env NODE_ENV=test && node ./deploy/index.ts",
+    "deploy:prod": "cross-env NODE_ENV=production && node ./deploy/index.ts"
   },
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
@@ -31,6 +33,7 @@
     "echarts-liquidfill": "^3.1.0",
     "echarts-stat": "^1.2.0",
     "echarts-wordcloud": "^2.0.0",
+    "ftp-deploy": "^2.4.5",
     "gsap": "^3.11.3",
     "highlight.js": "^11.5.0",
     "html2canvas": "^1.4.1",

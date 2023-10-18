@@ -12,10 +12,10 @@ const getNODE_ENV = function () {
 module.exports.getFtpDeployConfig = async function getFtpDeployConfig() {
   const config = await deployConfig()
   return {
-    user: config.user, // 服务器登录账号
-    password: config.password, // 服务器密码
-    host: config.host, // 服务器地址
-    port: config.port.get(getNODE_ENV()), // ftp的服务器端口
+    user: config.user[getNODE_ENV()], // 服务器登录账号
+    password: config.password[getNODE_ENV()], // 服务器密码
+    host: config.host[getNODE_ENV()], // 服务器地址
+    port: config.port[getNODE_ENV()], // ftp的服务器端口
     localRoot: config.localRoot, // 上传的文件
     remoteRoot: config.remoteRoot[getNODE_ENV()], // 远程服务器文件存储路径
     include: ['*', '**/*'],// 这将上传除了点文件之外的所有文件

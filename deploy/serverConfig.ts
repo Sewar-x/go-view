@@ -53,15 +53,18 @@ const getConfig = async function () {
   return {
     user: users?.user,
     password: users?.password,
-    host: "10.118.1.89",
-    port: new Map([
-      ["test", 22],
-      ["production", 22],
-    ]),
+    host: {
+      test: "10.126.16.116",
+      production: "10.126.16.116"
+    },
+    port: {
+      test: 2021,
+      production: 2021
+    },
     localRoot: path.resolve(__dirname, `../dist`),
     remoteRoot: {// 远程静态资源文件路径
-      test: '',
-      production: ''
+      test: '/lowcode',
+      production: '/lowcode'
     }
   };
 }
