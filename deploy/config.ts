@@ -23,6 +23,6 @@ module.exports.getFtpDeployConfig = async function getFtpDeployConfig() {
     exclude: ["dist/**/*.map", "node_modules/**", "node_modules/**/.*", ".git/**"],
     deleteRemote: true, // 如果为true，则在上传前删除目的地的所有现有文件
     forcePasv: true, // 主动模式/被动模式
-    sftp: true, // 使用 sftp协议 或 ftp协议
+    sftp: false, // 使用 sftp协议 或 ftp协议
   };
 };
