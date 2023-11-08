@@ -6,6 +6,7 @@
   },
   "scripts": {
     "dev": "vite --host",
+    "prod": "vite --host --mode production",
     "build": "vue-tsc --noEmit && vite build",
     "build:test": "cross-env NODE_ENV=test vite build --mode test && esno ./build/script/postBuild.ts && npm run deploy:test",
     "build:prod": "cross-env NODE_ENV=production vite build --mode production && esno ./build/script/postBuild.ts && npm run deploy:prod",

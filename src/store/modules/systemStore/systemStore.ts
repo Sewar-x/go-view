@@ -2,7 +2,11 @@ import { defineStore } from 'pinia'
 import { SystemStoreType, UserInfoType, FetchInfoType } from './systemStore.d'
 import { setLocalStorage, getLocalStorage } from '@/utils'
 import { StorageEnum } from '@/enums/storageEnum'
-
+import {
+  SystemStoreUserInfoEnum,
+  SystemStoreEnum,
+} from "@/store/modules/systemStore/systemStore.d";
+import { setToken } from "@/utils/auth.ts"
 const { GO_SYSTEM_STORE } = StorageEnum
 
 const storageSystem: SystemStoreType = getLocalStorage(GO_SYSTEM_STORE)
@@ -37,6 +41,7 @@ export const useSystemStore = defineStore({
         state[key] = value
       });
       setLocalStorage(GO_SYSTEM_STORE, this.$state)
+      setToken(undefined, value?.userToken)
     }
   }
 })

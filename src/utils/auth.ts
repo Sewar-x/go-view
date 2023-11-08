@@ -13,9 +13,9 @@ export const OALoginToken = 'LtpaToken'
  * 设置 Token 信息
  * @param {*} param
  */
-export const setTokenInfo = (token: string, ticketName: string, ticketValue: string): void => {
-    setCookie(StorageEnum.TOKEN_KEY, token)
-    setOAToken(ticketName, ticketValue)
+export const setTokenInfo = (tokenName: string, tokenValue: string, ticketName: string, ticketValue: string): void => {
+    setCookie(tokenName || StorageEnum.TOKEN_KEY, tokenValue);
+    // setOAToken(ticketName, ticketValue)
 }
 
 /**
@@ -23,7 +23,7 @@ export const setTokenInfo = (token: string, ticketName: string, ticketValue: str
  */
 export const removeAuthToken = () => {
     removeToken()
-    removeOAToken()
+    // removeOAToken()
 }
 
 /**
@@ -40,8 +40,8 @@ export const getToken = (key: string | undefined): string | undefined => {
  * @param {*} token
  * @returns
  */
-export const setToken = (token: string) => {
-    return setCookie(StorageEnum.TOKEN_KEY, token)
+export const setToken = (tokenName: string, tokenValue: string) => {
+    return setCookie(tokenName || StorageEnum.TOKEN_KEY, tokenValue);
 }
 
 /**

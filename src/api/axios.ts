@@ -14,6 +14,7 @@ import  { RequestInstance } from '#/axios.d'
 const axiosInstance = axios.create({
   baseURL: `${import.meta.env.PROD ? import.meta.env.VITE_PRO_PATH : ''}${axiosPre}`,
   timeout: ResultEnum.TIMEOUT,
+  withCredentials: true,
 }) as unknown as RequestInstance
 const tokensStatus = [ ResultEnum.TOKEN_AUTHENTICATION_TIMEOUT, ResultEnum.TOKEN_INVALID,ResultEnum.TOKEN_REQUIRED]
 
