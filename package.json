@@ -9,14 +9,14 @@
     "prod": "vite --host --mode production",
     "build": "vue-tsc --noEmit && vite build",
     "build:test": "cross-env NODE_ENV=test vite build --mode test && esno ./build/script/postBuild.ts && npm run deploy:test",
-    "build:prod": "cross-env NODE_ENV=production vite build --mode production && esno ./build/script/postBuild.ts && npm run deploy:prod",
+    "build:prod": "cross-env NODE_ENV=production vite build --mode production && esno ./build/script/postBuild.ts && npm run deploy:prod ",
     "preview": "vite preview",
     "new": "plop --plopfile ./plop/plopfile.js",
     "postinstall": "husky install",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.vue src",
     "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx,.vue src --fix",
-    "deploy:test": "cross-env NODE_ENV=test && node ./deploy/index.ts",
-    "deploy:prod": "cross-env NODE_ENV=production && node ./deploy/index.ts"
+    "deploy:test": "cross-env NODE_ENV=test && esno ./deploy/index.ts",
+    "deploy:prod": "cross-env NODE_ENV=production && esno ./deploy/index.ts"
   },
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",

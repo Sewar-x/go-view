@@ -41,7 +41,9 @@ export const useSystemStore = defineStore({
         state[key] = value
       });
       setLocalStorage(GO_SYSTEM_STORE, this.$state)
-      setToken(undefined, value?.userToken)
+      if (value?.userToken) {
+        setToken(undefined, value?.userToken)
+      }
     }
   }
 })

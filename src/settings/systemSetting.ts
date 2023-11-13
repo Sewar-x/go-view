@@ -17,7 +17,7 @@ export const systemSetting = {
   // 图表工具栏状态隐藏（刚开始不隐藏）
   [SettingStoreEnums.CHART_TOOLS_STATUS_HIDE]: false,
   // app 名称
-  APP_NAME: 'APP Maker',
+  APP_NAME: 'MOKA RDBI',
   // app 标语
-  APP_SLOGAN: "Make your Application",
+  APP_SLOGAN: "茂佳科技 研发 BI 平台",
 }
